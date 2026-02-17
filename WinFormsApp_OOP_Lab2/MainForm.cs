@@ -3,26 +3,43 @@ using WinFormsApp_OOP_Lab1.Model;
 
 namespace WinFormsApp_OOP_Lab2
 {
+    /// <summary>
+    /// Главный UI-компонент
+    /// </summary>
     public partial class MainForm : Form
     {
-        
-        private PersonStack personStack;
+        /// <summary> Стэк для объектов Person </summary>
+        private PersonStack _personStack;
 
-        private EventProcessing eventProcessing;
+        /// <summary> Компонент для отображения событий </summary>
+        private EventProcessing _eventProcessing;
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
-            personStack = new PersonStack();
-            eventProcessing = new(ActivityLabel, personStack);
+            _personStack = new PersonStack();
+            _eventProcessing = new(ActivityLabel, _personStack);
             ShowStackContent();
         }
 
+        /// <summary>
+        /// Обработчик события для загрузки формы
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Бригада 13: Пономарев П., Толстоухов В.\n Вариант 13: Человек. Stack",
                 "Лабораторная работа №2");
             MeasureListView_Load();
         }
+
+        /// <summary>
+        /// Метод для загрузки таблицы сравнения
+        /// </summary>
         private void MeasureListView_Load()
         {
             MeasureListView.Columns.Clear();
@@ -33,12 +50,18 @@ namespace WinFormsApp_OOP_Lab2
             MeasureListView.Columns.Add("Случайная выборка (мс)", 190);
         }
 
+        /// <summary>
+        /// Обработчик события для кнопки "Удалить"
+        /// Метод для удаления объекта из стэка
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (personStack.Stack.Count > 0)
-                    personStack.RemoveItem();
+                if (_personStack.Stack.Count > 0)
+                    _personStack.RemoveItem();
                 else
                     MessageBox.Show("Нельзя удалить элемент: стэк пуст!", "Ошибка удаления");
                 ShowStackContent();
@@ -53,12 +76,18 @@ namespace WinFormsApp_OOP_Lab2
             }
         }
 
+        /// <summary>
+        /// Обработчик события для кнопки "Добавить"
+        /// Метод для добавления объекта в стэк
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void AddButton_Click(Object sender, EventArgs e)
         {
             try
             {
                 Person p = RandomValuesGenerator.CreateRandomPerson();
-                personStack.AddItem(p);
+                _personStack.AddItem(p);
                 ShowStackContent();
             }
             catch (Exception ex)
@@ -71,6 +100,12 @@ namespace WinFormsApp_OOP_Lab2
             }
         }
 
+        /// <summary>
+        /// Обработчик события для кнопки "Сравнить"
+        /// Метод для сравнения производительности стэка и списка
+        /// </summary>
+        /// <param name="sender"> объект-отправитель </param>
+        /// <param name="e"> событие </param>
         private void CompareButton_Click (object sender, EventArgs e)
         {
             MeasureListView.Items.Clear();
@@ -86,15 +121,19 @@ namespace WinFormsApp_OOP_Lab2
             arrayItem.SubItems.Add(MeasureComponent.RandomArraySelection().ToString());
             MeasureListView.Items.Add(arrayItem);
         }
+
+        /// <summary>
+        /// Метод для отображения содержимого стэка
+        /// </summary>
         private void ShowStackContent()
         {
-            if (personStack.Stack.Count == 0)
+            if (_personStack.Stack.Count == 0)
             {
                 ContentLabel.Text = "Содержимое стэка: стэк пуст!";
                 return;
             }
             string text = "Содержимое стэка: ";
-            foreach (Person p in personStack.Stack)
+            foreach (Person p in _personStack.Stack)
             {
                 text += p.ToString() + ", ";
             }

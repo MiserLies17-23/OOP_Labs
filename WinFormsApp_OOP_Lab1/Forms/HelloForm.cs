@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace WinFormsApp_OOP_Lab1
+﻿namespace WinFormsApp_OOP_Lab1
 {
     /// <summary>
     /// Форма приветствия

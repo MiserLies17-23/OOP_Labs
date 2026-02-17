@@ -1,10 +1,10 @@
 ﻿using WinFormsApp_OOP_Lab1.Exceptions;
-using WinFormsApp_OOP_Lab1.util;
+using WinFormsApp_OOP_Lab1.Utils;
 
 namespace WinFormsApp_OOP_Lab1.Model
 {
     /// <summary>
-    /// Класс 
+    /// Класс Человек
     /// </summary>
     public class Person
     {
@@ -53,7 +53,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _name;
             set
             {
-                Validation.StringParamValidation(value, nameof(Name)); 
+                Validator.StringParamValidation(value, nameof(Name)); 
                 _name = value;
             }
         }
@@ -66,7 +66,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _height;
             set
             {
-                Validation.HeightValidation(value);
+                Validator.HeightValidation(value);
                 _height = value;
             }
         }
@@ -79,7 +79,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _width;
             set
             {
-                Validation.WidthValidation(value);
+                Validator.WidthValidation(value);
                 _width = value;
 
             }
@@ -93,7 +93,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _age;
             set
             {
-                Validation.AgeValidation(value);
+                Validator.AgeValidation(value);
                 _age = value;
             }
         }
@@ -106,7 +106,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _country;
             set
             {
-                Validation.StringParamValidation(value, nameof(Country));
+                Validator.StringParamValidation(value, nameof(Country));
                 _country = value;
             }
         }
@@ -119,7 +119,7 @@ namespace WinFormsApp_OOP_Lab1.Model
             get => _city;
             set
             {
-                Validation.StringParamValidation(value, nameof(City));
+                Validator.StringParamValidation(value, nameof(City));
                 _city = value;
             }
         }

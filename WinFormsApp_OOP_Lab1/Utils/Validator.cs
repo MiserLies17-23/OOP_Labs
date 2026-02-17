@@ -1,12 +1,11 @@
-﻿using System;
-using WinFormsApp_OOP_Lab1.Exceptions;
+﻿using WinFormsApp_OOP_Lab1.Exceptions;
 
-namespace WinFormsApp_OOP_Lab1.util
+namespace WinFormsApp_OOP_Lab1.Utils
 {
     /// <summary>
     /// Статический утилитный класс для валидации
     /// </summary>
-    public static class Validation
+    public static class Validator
     {
         /// <summary>
         /// Статический метод для валидации строковых полей 

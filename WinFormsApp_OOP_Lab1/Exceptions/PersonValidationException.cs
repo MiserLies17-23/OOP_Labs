@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WinFormsApp_OOP_Lab1.Exceptions
+﻿namespace WinFormsApp_OOP_Lab1.Exceptions
 {
     /// <summary>
     /// Класс исключений для ошибко валидации

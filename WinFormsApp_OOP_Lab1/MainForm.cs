@@ -1,5 +1,3 @@
-using System;
-using System.Windows.Forms;
 using WinFormsApp_OOP_Lab1.Exceptions;
 using WinFormsApp_OOP_Lab1.Model;
 
