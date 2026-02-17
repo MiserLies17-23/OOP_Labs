@@ -46,6 +46,7 @@ namespace WinFormsApp_OOP_Lab3
                 ClonesDataGridView.Rows[rowIndex].Cells[2].Value = "Показать";
             }
         }
+
         private void ChangeButton_Click(object sender, EventArgs e)
         {
             try

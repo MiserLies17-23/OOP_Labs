@@ -1,8 +1,9 @@
 ﻿using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json.Serialization;
+using WinFormsApp_OOP_Lab3.Utils;
 
-namespace WinFormsApp_OOP_Lab3
+namespace WinFormsApp_OOP_Lab3.Model
 {
     public class Person : IPersonCloneable
     {
@@ -147,7 +148,7 @@ namespace WinFormsApp_OOP_Lab3
 
         public object DeepClone()
         {
-            Person clonePerson = (Person)this.MemberwiseClone();
+            Person clonePerson = (Person)MemberwiseClone();
             return clonePerson;
         }
     }

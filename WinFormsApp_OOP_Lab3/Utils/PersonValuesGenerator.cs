@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp_OOP_Lab3
+﻿using WinFormsApp_OOP_Lab3.Model;
+
+namespace WinFormsApp_OOP_Lab3.Utils
 {
     public static class PersonValuesGenerator
     {
@@ -39,23 +41,23 @@
 
         private static double GetRamdomWidth()
         {
-            return (double)RND.Next(1, 250);
+            return RND.Next(1, 250);
         }
 
         private static double GetRamdomHeight()
         {
-            return (double)RND.Next(1, 250);
+            return RND.Next(1, 250);
         }
 
         private static int GetRandomAge()
         {
-            return (int)RND.Next(0, 100);
+            return RND.Next(0, 100);
         }
 
         private static string GetRandomCountry(out int index)
         {
             index = RND.Next(COUNTRY_CITY.Count);
-            return (string)COUNTRY_CITY.Keys.ElementAt(index);
+            return COUNTRY_CITY.Keys.ElementAt(index);
         }
 
         private static string GetRandomCity(int countryIndex)

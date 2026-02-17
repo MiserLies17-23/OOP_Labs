@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp_OOP_Lab3
+﻿namespace WinFormsApp_OOP_Lab3.Exceptions
 {
     public class PersonValidationException : Exception
     {

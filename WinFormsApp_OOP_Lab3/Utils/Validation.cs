@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp_OOP_Lab3
+﻿using WinFormsApp_OOP_Lab3.Exceptions;
+
+namespace WinFormsApp_OOP_Lab3.Utils
 {
     public static class Validation
     {
