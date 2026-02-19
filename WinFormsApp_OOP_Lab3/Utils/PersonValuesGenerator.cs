@@ -2,70 +2,116 @@
 
 namespace WinFormsApp_OOP_Lab3.Utils
 {
+    /// <summary>
+    /// Статический утилитный класс для генерации случайного объекта Person
+    /// </summary>
     public static class PersonValuesGenerator
     {
-        private static Random RND = new();
+        /// <summary> Статический объект Random для генерации случайных числовых значений </summary>
+        private static readonly Random _RND = new();
 
-        private static Array GENDERS = Enum.GetValues(typeof(Gender));
+        /// <summary> Статический массив возможных значений пола человека </summary>
+        private static Array _GENDERS = Enum.GetValues(typeof(Gender));
 
-        private static string[] MALE_NAMES =
+        /// <summary> Статический массив мужских имён </summary>
+        private static string[] _MALE_NAMES =
         {
             "Максим", "Михаил", "Андрей", "Александр", "Артём", "Павел", "Вадим", "Иван"
         };
 
-        private static string[] FEMALE_NAMES =
+        /// <summary> Статический массив женских имён </summary>
+        private static string[] _FEMALE_NAMES =
         {
             "Елизавета", "Екатерина", "София", "Александра", "Евгения", "Наталья", "Елена", "Ольга"
         };
 
-        private static Dictionary<string, string[]> COUNTRY_CITY = new()
+        /// <summary> Статический массив женских имён </summary>
+        private static Dictionary<string, string[]> _COUNTRY_CITY = new()
         {
             {"Россия", ["Москва", "Пенза", "Ростов", "Самара", "Саранск", "Владивосток"] },
             {"Китай", ["Пекин", "Шанхай"] }
         };
 
+        /// <summary>
+        /// Статический метод для получения случайного пола
+        /// </summary>
+        /// <returns> Случайный пол человека </returns>
         private static Gender GetRandomGender()
         {
-            return (Gender)GENDERS.GetValue(RND.Next(GENDERS.Length));
+            return (Gender)_GENDERS.GetValue(_RND.Next(_GENDERS.Length));
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного мужского имени
+        /// </summary>
+        /// <returns> Случайное мужское имя </returns>
         private static string GetRandomMaleName()
         {
-            return (string)MALE_NAMES.GetValue(RND.Next(MALE_NAMES.Length));
+            return (string)_MALE_NAMES.GetValue(_RND.Next(_MALE_NAMES.Length));
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного женского имени
+        /// </summary>
+        /// <returns> Случайное женское имя </returns>
         private static string GetRandomFemaleName()
         {
-            return (string)FEMALE_NAMES.GetValue(RND.Next(FEMALE_NAMES.Length));
+            return (string)_FEMALE_NAMES.GetValue(_RND.Next(_FEMALE_NAMES.Length));
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного веса 
+        /// </summary>
+        /// <returns> Случайный вес </returns>
         private static double GetRamdomWidth()
         {
-            return RND.Next(1, 250);
+            return _RND.Next(1, 250);
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного роста
+        /// </summary>
+        /// <returns> Случайный рост </returns>
         private static double GetRamdomHeight()
         {
-            return RND.Next(1, 250);
+            return _RND.Next(1, 250);
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного возраста 
+        /// </summary>
+        /// <returns> Случайный возраст </returns>
         private static int GetRandomAge()
         {
-            return RND.Next(0, 100);
+            return _RND.Next(0, 100);
         }
 
+        /// <summary>
+        /// Статический метод для получения случайной страны
+        /// </summary>
+        /// <param name="index"> Индекс случайной страны </param>
+        /// <returns> Случайная страна </returns>
         private static string GetRandomCountry(out int index)
         {
-            index = RND.Next(COUNTRY_CITY.Count);
-            return COUNTRY_CITY.Keys.ElementAt(index);
+            index = _RND.Next(_COUNTRY_CITY.Count);
+            return _COUNTRY_CITY.Keys.ElementAt(index);
         }
 
+        /// <summary>
+        /// Статический метод для получения случайного города
+        /// </summary>
+        /// <param name="countryIndex"> индекс страны </param>
+        /// <returns> Случайный город для страны заданного индекса </returns>
         private static string GetRandomCity(int countryIndex)
         {
-            string[] currentValues = COUNTRY_CITY.Values.ElementAt(countryIndex);
-            return (string)currentValues.GetValue(RND.Next(currentValues.Length));
+            string[] currentValues = _COUNTRY_CITY.Values.ElementAt(countryIndex);
+            return (string)currentValues.GetValue(_RND.Next(currentValues.Length));
         }
 
+        /// <summary>
+        /// Статический метод для генерации случайного объекта Person
+        /// </summary>
+        /// <returns> Случайный объект Person </returns>
         public static Person CreateRandomPerson()
         {
             Gender gen = GetRandomGender();

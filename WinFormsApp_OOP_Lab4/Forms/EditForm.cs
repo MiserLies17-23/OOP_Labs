@@ -5,11 +5,21 @@ using WinFormsApp_OOP_Lab4.Models.PersonProxy;
 
 namespace WinFormsApp_OOP_Lab4
 {
+    /// <summary>
+    /// Класс, представляющий форму изменения данных человека
+    /// </summary>
     public partial class EditForm : Form
     {
+        /// <summary> Объект PersonProxy для безопасной работы с Person </summary>
         private PersonProxy _personProxy;
 
+        /// <summary> Объект EventProcessing для отображения последних событий </summary>
         private EventProcessing _eventProcessing;
+
+        /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        /// <param name="personProxy"> PersonProxy </param>
         public EditForm(PersonProxy personProxy)
         {
             InitializeComponent();
@@ -17,6 +27,11 @@ namespace WinFormsApp_OOP_Lab4
             _eventProcessing = new(EventsLabel, _personProxy);
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> объект-отпраивтель (форма) </param>
+        /// <param name="e"> событие </param>
         private void EditForm_Load(object sender, EventArgs e)
         {
             _eventProcessing.ShowFirstEvent();
@@ -54,6 +69,11 @@ namespace WinFormsApp_OOP_Lab4
             AgeTextBox.Text = _personProxy.Age.ToString();
         }
 
+        /// <summary>
+        /// Обработчик события для кнопки "Сохранить"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try

@@ -2,6 +2,9 @@
 
 namespace WinFormsApp_OOP_Lab4.Utils
 {
+    /// <summary>
+    /// Статический утилитный класс для валидации данных человека
+    /// </summary>
     public static class Validator
     {
         /// <summary>

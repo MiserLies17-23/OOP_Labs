@@ -204,7 +204,7 @@
             ChangeButton.TabIndex = 30;
             ChangeButton.Text = "Изменить";
             ChangeButton.UseVisualStyleBackColor = true;
-            ChangeButton.Click += this.ChangeButton_Click;
+            ChangeButton.Click += ChangeButton_Click;
             // 
             // MainForm
             // 
@@ -230,7 +230,7 @@
             Controls.Add(NameTextBox);
             Controls.Add(EventLabel);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Главная форма";
             Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();

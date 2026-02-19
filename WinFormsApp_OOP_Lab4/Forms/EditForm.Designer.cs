@@ -66,7 +66,7 @@
             ExitButton.TabIndex = 62;
             ExitButton.Text = "Назад";
             ExitButton.UseVisualStyleBackColor = true;
-            ExitButton.Click += this.ExitButton_Click;
+            ExitButton.Click += ExitButton_Click;
             // 
             // SaveButton
             // 
@@ -76,7 +76,7 @@
             SaveButton.TabIndex = 61;
             SaveButton.Text = "Сохранить";
             SaveButton.UseVisualStyleBackColor = true;
-            SaveButton.Click += this.SaveButton_Click;
+            SaveButton.Click += SaveButton_Click;
             // 
             // HeaderLabel
             // 
@@ -84,9 +84,9 @@
             HeaderLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             HeaderLabel.Location = new Point(278, 73);
             HeaderLabel.Name = "HeaderLabel";
-            HeaderLabel.Size = new Size(203, 20);
+            HeaderLabel.Size = new Size(192, 20);
             HeaderLabel.TabIndex = 60;
-            HeaderLabel.Text = "Форма изменения данных";
+            HeaderLabel.Text = "Введите новые значения";
             // 
             // CityLabel
             // 
@@ -226,8 +226,8 @@
             Controls.Add(NameLabel);
             Controls.Add(NameTextBox);
             Name = "EditForm";
-            Text = "EditForm";
-            Load += this.EditForm_Load;
+            Text = "Форма изменения данных";
+            Load += EditForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

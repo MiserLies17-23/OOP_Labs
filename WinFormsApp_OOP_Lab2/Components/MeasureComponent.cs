@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using WinFormsApp_OOP_Lab1.Model;
+using WinFormsApp_OOP_Lab2.Stack;
+using WinFormsApp_OOP_Lab2.Utils;
 
-namespace WinFormsApp_OOP_Lab2
+namespace WinFormsApp_OOP_Lab2.Components
 {
     /// <summary>
     /// Статический класс для сравнения производительности стэка и списка
@@ -51,7 +53,7 @@ namespace WinFormsApp_OOP_Lab2
             _STOPWATCH.Reset();
             _STOPWATCH.Start();
             for (int i = 0; i < _SIZE; i++)
-                _ARRAY[i] = (RandomValuesGenerator.CreateRandomPerson());
+                _ARRAY[i] = RandomValuesGenerator.CreateRandomPerson();
             _STOPWATCH.Stop();
             return (int)_STOPWATCH.ElapsedMilliseconds;
         }

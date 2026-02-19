@@ -1,4 +1,7 @@
 using System.Windows.Forms;
+using WinFormsApp_OOP_Lab3.Exceptions;
+using WinFormsApp_OOP_Lab3.Model;
+using WinFormsApp_OOP_Lab3.Utils;
 
 namespace WinFormsApp_OOP_Lab3
 {

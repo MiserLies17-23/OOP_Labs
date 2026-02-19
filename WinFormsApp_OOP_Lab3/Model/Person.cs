@@ -1,34 +1,31 @@
-﻿using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.Json.Serialization;
-using WinFormsApp_OOP_Lab3.Utils;
+﻿using WinFormsApp_OOP_Lab3.Utils;
 
 namespace WinFormsApp_OOP_Lab3.Model
 {
     public class Person : IPersonCloneable
     {
-        // Пол человека
+        /// <summary> Пол человека </summary>
         private Gender _gen;
 
-        // Имя человека
+        /// <summary> Имя человека </summary>
         private string _name;
 
-        // Рост человека
+        /// <summary> Рост человека </summary>
         private double _height;
 
-        // Вес человека
+        /// <summary> Вес человека </summary>
         private double _width;
 
-        // Город проживания человека
+        /// <summary> Город проживания человека </summary>
         private string _city;
 
-        // Страна проживания человека
+        /// <summary> Страна проживания человека </summary>
         private string _country;
 
-        // Возраст человека
+        /// <summary> Возраст человека </summary>
         private int _age;
 
-
+        /// <summary> Список клонированных объектов </summary>
         private static List<Person> _persons = new();
 
         /// <summary>
@@ -44,7 +41,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _name;
             set
             {
-                Validation.StringParamValidation(value, nameof(Name));
+                Validator.StringParamValidation(value, nameof(Name));
                 _name = value;
             }
         }
@@ -57,7 +54,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _height;
             set
             {
-                Validation.HeightValidation(value);
+                Validator.HeightValidation(value);
                 _height = value;
             }
         }
@@ -70,7 +67,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _width;
             set
             {
-                Validation.WidthValidation(value);
+                Validator.WidthValidation(value);
                 _width = value;
 
             }
@@ -84,7 +81,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _age;
             set
             {
-                Validation.AgeValidation(value);
+                Validator.AgeValidation(value);
                 _age = value;
             }
         }
@@ -97,7 +94,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _country;
             set
             {
-                Validation.StringParamValidation(value, nameof(Country));
+                Validator.StringParamValidation(value, nameof(Country));
                 _country = value;
             }
         }
@@ -110,13 +107,26 @@ namespace WinFormsApp_OOP_Lab3.Model
             get => _city;
             set
             {
-                Validation.StringParamValidation(value, nameof(City));
+                Validator.StringParamValidation(value, nameof(City));
                 _city = value;
             }
         }
 
+        /// <summary>
+        /// Свойстыо для списка клонированных объектов
+        /// </summary>
         public static List<Person> Persons {get => _persons; private set => _persons = value; }
 
+        /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        /// <param name="gen"> пол </param>
+        /// <param name="name"> имя </param>
+        /// <param name="height"> рост </param>
+        /// <param name="width"> вес </param>
+        /// <param name="country"> страна </param>
+        /// <param name="city"> город </param>
+        /// <param name="age"> возраст </param>
         public Person(Gender gen, string name, double height, double width, string country, string city, int age)
         {
             Gen = gen;
@@ -128,6 +138,10 @@ namespace WinFormsApp_OOP_Lab3.Model
             Age = age;
         }
 
+        /// <summary>
+        /// Метод для вывода пола
+        /// </summary>
+        /// <returns> строка - пол человека </returns>
         public string GetGenderToString()
         {
             if (Gen == Gender.MALE)
@@ -135,17 +149,31 @@ namespace WinFormsApp_OOP_Lab3.Model
             return "Жен";
         }
 
+        /// <summary>
+        /// Переопределённый метод ToString() для класса
+        /// </summary>
+        /// <returns> имя человека </returns>
         public override string ToString()
         {
             return Name;
         }
 
+        /// <summary>
+        /// Метод неглубокого копирования
+        /// Определяется наследуемым интерфейсом
+        /// </summary>
+        /// <returns> ссылака на текущий объект </returns>
         public object ShallowCopy()
         {
             Person clonePerson = this;
             return clonePerson;
         }
 
+        /// <summary>
+        /// Метод для глубокого копирования
+        /// Определяется наследуемым интерфейсом
+        /// </summary>
+        /// <returns> клонированный объект </returns>
         public object DeepClone()
         {
             Person clonePerson = (Person)MemberwiseClone();

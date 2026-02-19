@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp_OOP_Lab2
+﻿using WinFormsApp_OOP_Lab2.Stack;
+
+namespace WinFormsApp_OOP_Lab2.Components
 {
     /// <summary>
     /// Класс-компонент для отображения событий

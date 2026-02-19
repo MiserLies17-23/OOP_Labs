@@ -1,11 +1,15 @@
-﻿using System;
+﻿using WinFormsApp_OOP_Lab3.Exceptions;
+using WinFormsApp_OOP_Lab3.Model;
 
 namespace WinFormsApp_OOP_Lab3
 {
+    /// <summary>
+    /// Класс, представляющий форму для изменения данных человека
+    /// </summary>
     public partial class EditForm : Form
     {
-        // Объект класса Person - человек
-        private Person person;
+        /// <summary> Объект класса Person - человек </summary>
+        private Person _person;
 
         /// <summary>
         /// Конструктор с параметрами
@@ -15,8 +19,14 @@ namespace WinFormsApp_OOP_Lab3
         {
             InitializeComponent();
             Load_ComboBox();
-            person = _person;
+            this._person = _person;
         }
+
+        /// <summary>
+        /// Метод для загрузки формы
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
         private void EditForm_Load(object sender, EventArgs e)
         {
             ShowEditData();
@@ -43,15 +53,20 @@ namespace WinFormsApp_OOP_Lab3
         /// </summary>
         public void ShowEditData()
         {
-            GenderComboBox.SelectedValue = person.Gen;
-            NameTextBox.Text = person.Name;
-            HeightTextBox.Text = person.Height.ToString();
-            WidthTextBox.Text = person.Width.ToString();
-            CountryTextBox.Text = person.Country;
-            CityTextBox.Text = person.City;
-            AgeTextBox.Text = person.Age.ToString();
+            GenderComboBox.SelectedValue = _person.Gen;
+            NameTextBox.Text = _person.Name;
+            HeightTextBox.Text = _person.Height.ToString();
+            WidthTextBox.Text = _person.Width.ToString();
+            CountryTextBox.Text = _person.Country;
+            CityTextBox.Text = _person.City;
+            AgeTextBox.Text = _person.Age.ToString();
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Сохранить"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель </param>
+        /// <param name="e"> событие </param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
@@ -59,28 +74,28 @@ namespace WinFormsApp_OOP_Lab3
                 if (!int.TryParse(AgeTextBox.Text, out int age))
                     throw new PersonValidationException(
                         "Возраст должен быть числом!",
-                        nameof(person.Age),
+                        nameof(_person.Age),
                         AgeTextBox.Text);
 
                 if (!float.TryParse(HeightTextBox.Text, out float height))
                     throw new PersonValidationException(
                         "Рост должен быть числом!",
-                        nameof(person.Height),
+                        nameof(_person.Height),
                         HeightTextBox.Text);
 
                 if (!float.TryParse(WidthTextBox.Text, out float weight))
                     throw new PersonValidationException(
                         "Вес должен быть числом!",
-                        nameof(person.Width),
+                        nameof(_person.Width),
                        WidthTextBox.Text);
 
-                person.Gen = (Gender)GenderComboBox.SelectedValue;
-                person.Name = NameTextBox.Text;
-                person.Height = Convert.ToDouble(HeightTextBox.Text);
-                person.Width = Convert.ToDouble(WidthTextBox.Text);
-                person.Age = Convert.ToInt32(AgeTextBox.Text);
-                person.City = CityTextBox.Text;
-                person.Country = CountryTextBox.Text;
+                _person.Gen = (Gender)GenderComboBox.SelectedValue;
+                _person.Name = NameTextBox.Text;
+                _person.Height = Convert.ToDouble(HeightTextBox.Text);
+                _person.Width = Convert.ToDouble(WidthTextBox.Text);
+                _person.Age = Convert.ToInt32(AgeTextBox.Text);
+                _person.City = CityTextBox.Text;
+                _person.Country = CountryTextBox.Text;
 
                 MessageBox.Show("Данные успешно обновлены!");
                 Close();
@@ -98,7 +113,7 @@ namespace WinFormsApp_OOP_Lab3
         /// <summary>
         /// События для кнопки "Назад"
         /// </summary>
-        /// <param name="sender"> объект, вызывающий событие </param>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
         /// <param name="e"> событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {

@@ -1,5 +1,8 @@
 ﻿namespace WinFormsApp_OOP_Lab3.Exceptions
 {
+    /// <summary>
+    /// Класс исключений для ошибко валидации
+    /// </summary>
     public class PersonValidationException : Exception
     {
         /// <summary>

@@ -2,7 +2,7 @@
 
 namespace WinFormsApp_OOP_Lab3.Utils
 {
-    public static class Validation
+    public static class Validator
     {
         /// <summary>
         /// Статический метод для валидации строковых полей 

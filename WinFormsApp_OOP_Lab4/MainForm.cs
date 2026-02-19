@@ -4,11 +4,21 @@ using WinFormsApp_OOP_Lab4.Models.PersonProxy;
 
 namespace WinFormsApp_OOP_Lab4
 {
+    /// <summary>
+    /// Главный UI-компонент приложения
+    /// Форма для отображения данных человека
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary> Объект PersonProxy для безопасной работы с Person </summary>
         private PersonProxy _personProxy;
 
+        /// <summary> Объект EventProcessing для отображения последних событий </summary>
         private EventProcessing _eventProcessing;
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -16,6 +26,11 @@ namespace WinFormsApp_OOP_Lab4
             _eventProcessing = new(EventLabel, _personProxy);
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Бригада №13: Пономарев П., Толстоухов В." +
@@ -24,6 +39,9 @@ namespace WinFormsApp_OOP_Lab4
             ShowPersonData();
         }
 
+        /// <summary>
+        /// Метод для отображения данных человека
+        /// </summary>
         private void ShowPersonData()
         {
             GenTextBox.Text = _personProxy.GetGenderToString(); 
@@ -35,6 +53,11 @@ namespace WinFormsApp_OOP_Lab4
             AgeTextBox.Text = _personProxy.Age.ToString();
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Изменить"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void ChangeButton_Click(object sender, EventArgs e)
         {
             try
@@ -53,6 +76,11 @@ namespace WinFormsApp_OOP_Lab4
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Выйти"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();

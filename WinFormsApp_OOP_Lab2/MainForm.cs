@@ -1,5 +1,8 @@
 using WinFormsApp_OOP_Lab1.Exceptions;
 using WinFormsApp_OOP_Lab1.Model;
+using WinFormsApp_OOP_Lab2.Components;
+using WinFormsApp_OOP_Lab2.Stack;
+using WinFormsApp_OOP_Lab2.Utils;
 
 namespace WinFormsApp_OOP_Lab2
 {
@@ -104,7 +107,7 @@ namespace WinFormsApp_OOP_Lab2
         /// Обработчик события для кнопки "Сравнить"
         /// Метод для сравнения производительности стэка и списка
         /// </summary>
-        /// <param name="sender"> объект-отправитель </param>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
         /// <param name="e"> событие </param>
         private void CompareButton_Click (object sender, EventArgs e)
         {
