@@ -38,7 +38,7 @@ namespace WinFormsApp_OOP_Lab3
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка переполнения памяти",
                     16);
@@ -54,8 +54,8 @@ namespace WinFormsApp_OOP_Lab3
             NameTextBox.Text = _clonePerson.ToString(); // Вывод поля через переопределённый метод ToString()
             HeightTextBox.Text = _clonePerson.Height.ToString();
             WidthTextBox.Text = _clonePerson.Width.ToString(); // Вывод поля через метод ToString()
-            CountryTextBox.Text = _clonePerson.Country; // Непосредственнный вывод поля
-            CityTextBox.Text = _clonePerson.City;
+            CountryTextBox.Text = _clonePerson.Address.Country; // Непосредственнный вывод поля
+            CityTextBox.Text = _clonePerson.Address.City;
             AgeTextBox.Text = _clonePerson.Age.ToString();
         }
 
@@ -69,7 +69,7 @@ namespace WinFormsApp_OOP_Lab3
             int index = Person.Persons.IndexOf(_clonePerson);
             if (index != -1)
                 Person.Persons[index] = _clonePerson;
-            Hide();
+            Close();
         }
     }
 }

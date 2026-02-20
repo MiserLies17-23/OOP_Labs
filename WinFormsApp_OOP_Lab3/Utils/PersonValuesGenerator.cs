@@ -125,7 +125,7 @@ namespace WinFormsApp_OOP_Lab3.Utils
             int age = GetRandomAge();
             string country = GetRandomCountry(out int index);
             string city = GetRandomCity(index);
-            return new Person(gen, name, height, width, country, city, age);
+            return new Person(gen, name, height, width, new Address(country, city), age);
         }
     }
 }

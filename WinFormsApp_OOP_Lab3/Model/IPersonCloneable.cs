@@ -9,12 +9,12 @@
         /// Метод для глубокого клонирования 
         /// </summary>
         /// <returns> Клонированный объект </returns>
-        public object DeepClone();
+        public IPersonCloneable DeepClone();
 
         /// <summary>
         /// Метод для неглубокго клонирования 
         /// </summary>
         /// <returns> клонированный объект </returns>
-        public object ShallowCopy();
+        public IPersonCloneable ShallowCopy();
     }
 }

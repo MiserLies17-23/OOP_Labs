@@ -15,11 +15,11 @@ namespace WinFormsApp_OOP_Lab3
         /// Конструктор с параметрами
         /// </summary>
         /// <param name="person"> объект класса Person </param>
-        public EditForm(Person _person)
+        public EditForm(Person person)
         {
             InitializeComponent();
             Load_ComboBox();
-            this._person = _person;
+            _person = person;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace WinFormsApp_OOP_Lab3
             NameTextBox.Text = _person.Name;
             HeightTextBox.Text = _person.Height.ToString();
             WidthTextBox.Text = _person.Width.ToString();
-            CountryTextBox.Text = _person.Country;
-            CityTextBox.Text = _person.City;
+            CountryTextBox.Text = _person.Address.Country;
+            CityTextBox.Text = _person.Address.City;
             AgeTextBox.Text = _person.Age.ToString();
         }
 
@@ -94,8 +94,8 @@ namespace WinFormsApp_OOP_Lab3
                 _person.Height = Convert.ToDouble(HeightTextBox.Text);
                 _person.Width = Convert.ToDouble(WidthTextBox.Text);
                 _person.Age = Convert.ToInt32(AgeTextBox.Text);
-                _person.City = CityTextBox.Text;
-                _person.Country = CountryTextBox.Text;
+                _person.Address.City = CityTextBox.Text;
+                _person.Address.Country = CountryTextBox.Text;
 
                 MessageBox.Show("Данные успешно обновлены!");
                 Close();

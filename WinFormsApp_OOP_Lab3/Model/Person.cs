@@ -16,11 +16,8 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// <summary> Вес человека </summary>
         private double _width;
 
-        /// <summary> Город проживания человека </summary>
-        private string _city;
-
-        /// <summary> Страна проживания человека </summary>
-        private string _country;
+        /// <summary> Адрес проживания человека </summary>
+        private Address _address;
 
         /// <summary> Возраст человека </summary>
         private int _age;
@@ -69,7 +66,6 @@ namespace WinFormsApp_OOP_Lab3.Model
             {
                 Validator.WidthValidation(value);
                 _width = value;
-
             }
         }
 
@@ -87,29 +83,12 @@ namespace WinFormsApp_OOP_Lab3.Model
         }
 
         /// <summary>
-        /// Свойство для страны объекта
+        /// Свойство для адреса объекта
         /// </summary>
-        public string Country
+        public Address Address
         {
-            get => _country;
-            set
-            {
-                Validator.StringParamValidation(value, nameof(Country));
-                _country = value;
-            }
-        }
-
-        /// <summary>
-        /// Свойство для города проживания объекта
-        /// </summary>
-        public string City
-        {
-            get => _city;
-            set
-            {
-                Validator.StringParamValidation(value, nameof(City));
-                _city = value;
-            }
+            get => _address;
+            set => _address = value;
         }
 
         /// <summary>
@@ -127,14 +106,13 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// <param name="country"> страна </param>
         /// <param name="city"> город </param>
         /// <param name="age"> возраст </param>
-        public Person(Gender gen, string name, double height, double width, string country, string city, int age)
+        public Person(Gender gen, string name, double height, double width, Address address, int age)
         {
             Gen = gen;
             Name = name;
             Height = height;
             Width = width;
-            Country = country;
-            City = city;
+            Address = address;
             Age = age;
         }
 
@@ -163,9 +141,10 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// Определяется наследуемым интерфейсом
         /// </summary>
         /// <returns> ссылака на текущий объект </returns>
-        public object ShallowCopy()
+        public IPersonCloneable ShallowCopy()
         {
-            Person clonePerson = this;
+            Person clonePerson = (Person)MemberwiseClone();
+            Persons.Add(clonePerson);
             return clonePerson;
         }
 
@@ -174,9 +153,16 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// Определяется наследуемым интерфейсом
         /// </summary>
         /// <returns> клонированный объект </returns>
-        public object DeepClone()
+        public IPersonCloneable DeepClone()
         {
-            Person clonePerson = (Person)MemberwiseClone();
+            Person clonePerson = new(
+                this.Gen,
+                new string(this.Name),
+                this.Height,
+                this.Width,
+                new Address(this.Address),
+                this.Age);
+            Persons.Add(clonePerson);
             return clonePerson;
         }
     }
