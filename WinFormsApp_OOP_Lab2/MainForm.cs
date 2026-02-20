@@ -35,9 +35,20 @@ namespace WinFormsApp_OOP_Lab2
         /// <param name="e"> событие </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Бригада 13: Пономарев П., Толстоухов В.\n Вариант 13: Человек. Stack",
-                "Лабораторная работа №2");
-            MeasureListView_Load();
+            try
+            {
+                MessageBox.Show("Бригада 13: Пономарев П., Толстоухов В.\n Вариант 13: Человек. Stack",
+                    "Лабораторная работа №2");
+                MeasureListView_Load();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.MessageBox(
+                    Handle,
+                    ex.ToString(),
+                    "Ошибка удаления",
+                    16);
+            }
         }
 
         /// <summary>
@@ -72,7 +83,7 @@ namespace WinFormsApp_OOP_Lab2
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка удаления",
                     16);
@@ -96,7 +107,7 @@ namespace WinFormsApp_OOP_Lab2
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка добавления",
                     16);
@@ -111,18 +122,30 @@ namespace WinFormsApp_OOP_Lab2
         /// <param name="e"> событие </param>
         private void CompareButton_Click (object sender, EventArgs e)
         {
-            MeasureListView.Items.Clear();
-            ListViewItem stackItem = new("Cтэк");
-            stackItem.SubItems.Add(MeasureComponent.InsertInStack().ToString());
-            stackItem.SubItems.Add(MeasureComponent.ConsistentStackSelection().ToString());
-            stackItem.SubItems.Add(MeasureComponent.RandomStackSelection().ToString());
-            MeasureListView.Items.Add(stackItem);
+            try
+            {
+                MeasureListView.Items.Clear();
+                ListViewItem stackItem = new("Cтэк");
+                stackItem.SubItems.Add(MeasureComponent.InsertInStack().ToString());
+                stackItem.SubItems.Add(MeasureComponent.ConsistentStackSelection().ToString());
+                stackItem.SubItems.Add(MeasureComponent.RandomStackSelection().ToString());
+                MeasureListView.Items.Add(stackItem);
 
-            ListViewItem arrayItem = new("Массив");
-            arrayItem.SubItems.Add(MeasureComponent.InsertInArray().ToString());
-            arrayItem.SubItems.Add(MeasureComponent.ConsistentArraySelection().ToString());
-            arrayItem.SubItems.Add(MeasureComponent.RandomArraySelection().ToString());
-            MeasureListView.Items.Add(arrayItem);
+                ListViewItem arrayItem = new("Массив");
+                arrayItem.SubItems.Add(MeasureComponent.InsertInArray().ToString());
+                arrayItem.SubItems.Add(MeasureComponent.ConsistentArraySelection().ToString());
+                arrayItem.SubItems.Add(MeasureComponent.RandomArraySelection().ToString());
+                MeasureListView.Items.Add(arrayItem);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.MessageBox(
+                    Handle,
+                    ex.ToString(),
+                    "Ошибка измерения",
+                    16);
+            }
+
         }
 
         /// <summary>

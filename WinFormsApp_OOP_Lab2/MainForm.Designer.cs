@@ -42,7 +42,7 @@
             // 
             WorkWithStackLabel.AutoSize = true;
             WorkWithStackLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            WorkWithStackLabel.Location = new Point(300, 9);
+            WorkWithStackLabel.Location = new Point(319, 9);
             WorkWithStackLabel.Name = "WorkWithStackLabel";
             WorkWithStackLabel.Size = new Size(169, 25);
             WorkWithStackLabel.TabIndex = 0;
@@ -50,16 +50,15 @@
             // 
             // ContentLabel
             // 
-            ContentLabel.AutoSize = true;
             ContentLabel.Location = new Point(29, 65);
             ContentLabel.Name = "ContentLabel";
-            ContentLabel.Size = new Size(142, 20);
+            ContentLabel.Size = new Size(810, 79);
             ContentLabel.TabIndex = 1;
             ContentLabel.Text = "Содержимое стэка:";
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(189, 147);
+            AddButton.Location = new Point(271, 147);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 2;
@@ -69,7 +68,7 @@
             // 
             // RemoveButton
             // 
-            RemoveButton.Location = new Point(433, 147);
+            RemoveButton.Location = new Point(476, 147);
             RemoveButton.Name = "RemoveButton";
             RemoveButton.Size = new Size(94, 29);
             RemoveButton.TabIndex = 3;
@@ -82,7 +81,7 @@
             MeasureListView.FullRowSelect = true;
             MeasureListView.GridLines = true;
             MeasureListView.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-            MeasureListView.Location = new Point(29, 235);
+            MeasureListView.Location = new Point(68, 235);
             MeasureListView.Name = "MeasureListView";
             MeasureListView.Size = new Size(730, 197);
             MeasureListView.TabIndex = 4;
@@ -112,7 +111,7 @@
             // 
             CompareLabel.AutoSize = true;
             CompareLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            CompareLabel.Location = new Point(189, 207);
+            CompareLabel.Location = new Point(233, 207);
             CompareLabel.Name = "CompareLabel";
             CompareLabel.Size = new Size(416, 25);
             CompareLabel.TabIndex = 7;
@@ -123,7 +122,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(800, 479);
+            ClientSize = new Size(874, 479);
             Controls.Add(CompareLabel);
             Controls.Add(CompareButton);
             Controls.Add(ActivityLabel);
@@ -132,7 +131,10 @@
             Controls.Add(AddButton);
             Controls.Add(ContentLabel);
             Controls.Add(WorkWithStackLabel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Главная форма";
             Load += MainForm_Load;
             ResumeLayout(false);
