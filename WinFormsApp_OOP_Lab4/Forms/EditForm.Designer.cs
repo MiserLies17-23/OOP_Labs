@@ -225,6 +225,9 @@
             Controls.Add(GenderLabel);
             Controls.Add(NameLabel);
             Controls.Add(NameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "EditForm";
             Text = "Форма изменения данных";
             Load += EditForm_Load;

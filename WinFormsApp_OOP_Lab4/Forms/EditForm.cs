@@ -25,6 +25,7 @@ namespace WinFormsApp_OOP_Lab4
             InitializeComponent();
             _personProxy = personProxy;
             _eventProcessing = new(EventsLabel, _personProxy);
+            Load_ComboBox();
         }
 
         /// <summary>
@@ -36,7 +37,6 @@ namespace WinFormsApp_OOP_Lab4
         {
             _eventProcessing.ShowFirstEvent();
             ShowEditData();
-            Load_ComboBox();
         }
 
         /// <summary>
@@ -48,7 +48,6 @@ namespace WinFormsApp_OOP_Lab4
             {
                 { Gender.MALE, "Муж" },
                 { Gender.FEMALE, "Жен" },
-
             };
             GenderComboBox.DataSource = new BindingSource(displayValues, null);
             GenderComboBox.DisplayMember = "Value";
@@ -96,7 +95,7 @@ namespace WinFormsApp_OOP_Lab4
                         nameof(_personProxy.Weight),
                        WidthTextBox.Text);
 
-                _personProxy.Gen = (Gender)GenderComboBox.SelectedValue;
+                _personProxy.Gen = GenderComboBox.SelectedValue is Gender gender ? gender : throw new NullReferenceException();
                 _personProxy.Name = NameTextBox.Text;
                 _personProxy.Height = Convert.ToDouble(HeightTextBox.Text);
                 _personProxy.Weight = Convert.ToDouble(WidthTextBox.Text);

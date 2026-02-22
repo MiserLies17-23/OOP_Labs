@@ -24,7 +24,10 @@ namespace WinFormsApp_OOP_Lab4.Models.PersonProxy
         public Gender Gen
         {
             get => _person.Gen;
-            set => _person.Gen = value;
+            set { 
+                _person.Gen = value;
+                AddEvent($"В поле {nameof(_person.Gen)} сохранено значение: \"{value}\"!");
+            }
         }
 
         /// <summary>
@@ -135,7 +138,7 @@ namespace WinFormsApp_OOP_Lab4.Models.PersonProxy
         /// </summary>
         public PersonProxy()
         {
-            _person = PersonRandomGenerator.CreateRandomPerson();
+            _person = PersonValuesGenerator.CreateRandomPerson();
             _events = [];
             AddEvent($"создан объект Person {_person.Name}");
             

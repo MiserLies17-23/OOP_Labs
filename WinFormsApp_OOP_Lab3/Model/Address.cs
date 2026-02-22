@@ -53,7 +53,7 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// </summary>
         /// <param name="country"> страна проживания </param>
         /// <param name="city"> город проживания </param>
-        public Address(string country, string city)
+        public Address(string country, string city) : this()
         {
             Country = country;
             City = city;
@@ -64,8 +64,11 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// Глубокое копирование объекта
         /// </summary>
         /// <param name="address"> адрес </param>
-        public Address(Address address)
+        public Address(Address address) : this()
         {
+            if (address == null)
+                throw new ArgumentNullException(nameof(address));
+
             Country = address.Country;
             City = address.City;
         }

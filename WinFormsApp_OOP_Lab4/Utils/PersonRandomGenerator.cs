@@ -11,22 +11,22 @@ namespace WinFormsApp_OOP_Lab4.Utils
         private static readonly Random _RND = new();
 
         /// <summary> Статический массив возможных значений пола человека </summary>
-        private static Array _GENDERS = Enum.GetValues(typeof(Gender));
+        private static readonly Array _GENDERS = Enum.GetValues(typeof(Gender));
 
         /// <summary> Статический массив мужских имён </summary>
-        private static string[] _MALE_NAMES =
+        private static readonly string[] _MALE_NAMES =
         {
             "Максим", "Михаил", "Андрей", "Александр", "Артём", "Павел", "Вадим", "Иван"
         };
 
         /// <summary> Статический массив женских имён </summary>
-        private static string[] _FEMALE_NAMES =
+        private static readonly string[] _FEMALE_NAMES =
         {
             "Елизавета", "Екатерина", "София", "Александра", "Евгения", "Наталья", "Елена", "Ольга"
         };
 
         /// <summary> Статический массив женских имён </summary>
-        private static Dictionary<string, string[]> _COUNTRY_CITY = new()
+        private static readonly Dictionary<string, string[]> _COUNTRY_CITY = new()
         {
             {"Россия", ["Москва", "Пенза", "Ростов", "Самара", "Саранск", "Владивосток"] },
             {"Китай", ["Пекин", "Шанхай"] }
@@ -38,7 +38,8 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// <returns> Случайный пол человека </returns>
         private static Gender GetRandomGender()
         {
-            return (Gender)_GENDERS.GetValue(_RND.Next(_GENDERS.Length));
+            var value = _GENDERS.GetValue(_RND.Next(_GENDERS.Length));
+            return value is Gender gender ? gender : throw new NullReferenceException(nameof(_GENDERS));
         }
 
         /// <summary>
@@ -47,7 +48,8 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// <returns> Случайное мужское имя </returns>
         private static string GetRandomMaleName()
         {
-            return (string)_MALE_NAMES.GetValue(_RND.Next(_MALE_NAMES.Length));
+            var value = _MALE_NAMES.GetValue(_RND.Next(_MALE_NAMES.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_MALE_NAMES));
         }
 
         /// <summary>
@@ -56,7 +58,8 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// <returns> Случайное женское имя </returns>
         private static string GetRandomFemaleName()
         {
-            return (string)_FEMALE_NAMES.GetValue(_RND.Next(_FEMALE_NAMES.Length));
+            var value = _FEMALE_NAMES.GetValue(_RND.Next(_FEMALE_NAMES.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_FEMALE_NAMES));
         }
 
         /// <summary>
@@ -105,7 +108,8 @@ namespace WinFormsApp_OOP_Lab4.Utils
         private static string GetRandomCity(int countryIndex)
         {
             string[] currentValues = _COUNTRY_CITY.Values.ElementAt(countryIndex);
-            return (string)currentValues.GetValue(_RND.Next(currentValues.Length));
+            var value = currentValues.GetValue(_RND.Next(currentValues.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_COUNTRY_CITY));
         }
 
         /// <summary>
@@ -115,7 +119,7 @@ namespace WinFormsApp_OOP_Lab4.Utils
         public static Person CreateRandomPerson()
         {
             Gender gen = GetRandomGender();
-            string name = "";
+            string? name = "";
             if (gen == Gender.MALE)
                 name = GetRandomMaleName();
             else

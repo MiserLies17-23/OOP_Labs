@@ -103,7 +103,7 @@ namespace WinFormsApp_OOP_Lab3
             catch (PersonValidationException ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка валидации",
                     16);

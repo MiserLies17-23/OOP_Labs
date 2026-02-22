@@ -148,8 +148,8 @@ namespace WinFormsApp_OOP_Lab1.Model
             Height = 170;
             Width = 65;
             Age = 20;
-            Country = "Undefinded";
-            City = "Undefinded";
+            Country = "Undefinded"!;
+            City = "Undefinded"!;
             Count++;
             Persons.Add(this);
         }
@@ -170,7 +170,6 @@ namespace WinFormsApp_OOP_Lab1.Model
         /// <param name="name"> Имя </param>
         public Person(Gender gender, string name) : this()
         {
-            
             Gen = gender;
             Name = name;
         }

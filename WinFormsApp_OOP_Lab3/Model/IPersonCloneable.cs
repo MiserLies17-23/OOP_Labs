@@ -15,6 +15,6 @@
         /// Метод для неглубокго клонирования 
         /// </summary>
         /// <returns> клонированный объект </returns>
-        public IPersonCloneable ShallowCopy();
+        public IPersonCloneable ShallowClone();
     }
 }

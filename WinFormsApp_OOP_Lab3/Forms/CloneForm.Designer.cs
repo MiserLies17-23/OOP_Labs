@@ -219,8 +219,11 @@
             Controls.Add(HeightTextBox);
             Controls.Add(GenTextBox);
             Controls.Add(NameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "CloneForm";
-            Text = "CloneForm";
+            Text = "Форма клонированного объекта";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -38,7 +38,8 @@ namespace WinFormsApp_OOP_Lab2.Utils
         /// <returns> Случайный пол человека </returns>
         private static Gender GetRandomGender()
         {
-            return (Gender)_GENDERS.GetValue(_RND.Next(_GENDERS.Length));
+            var value = _GENDERS.GetValue(_RND.Next(_GENDERS.Length));
+            return value is Gender gender ? gender : throw new NullReferenceException();
         }
 
         /// <summary>
@@ -47,7 +48,8 @@ namespace WinFormsApp_OOP_Lab2.Utils
         /// <returns> Случайное мужское имя </returns>
         private static string GetRandomMaleName()
         {
-            return (string)_MALE_NAMES.GetValue(_RND.Next(_MALE_NAMES.Length));
+            var value = _MALE_NAMES.GetValue(_RND.Next(_MALE_NAMES.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_MALE_NAMES));
         }
 
         /// <summary>
@@ -56,7 +58,8 @@ namespace WinFormsApp_OOP_Lab2.Utils
         /// <returns> Случайное женское имя </returns>
         private static string GetRandomFemaleName()
         {
-            return (string)_FEMALE_NAMES.GetValue(_RND.Next(_FEMALE_NAMES.Length));
+            var value = _FEMALE_NAMES.GetValue(_RND.Next(_FEMALE_NAMES.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_FEMALE_NAMES));
         }
 
         /// <summary>
@@ -105,7 +108,8 @@ namespace WinFormsApp_OOP_Lab2.Utils
         private static string GetRandomCity(int countryIndex)
         {
             string[] currentValues = _COUNTRY_CITY.Values.ElementAt(countryIndex);
-            return (string)currentValues.GetValue(_RND.Next(currentValues.Length));
+            var value = currentValues.GetValue(_RND.Next(currentValues.Length));
+            return value as string ?? throw new ArgumentNullException(nameof(_COUNTRY_CITY));
         }
         
         /// <summary>

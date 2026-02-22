@@ -229,6 +229,8 @@
             Controls.Add(GenTextBox);
             Controls.Add(NameTextBox);
             Controls.Add(EventLabel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainForm";
             Text = "Главная форма";
             Load += MainForm_Load;

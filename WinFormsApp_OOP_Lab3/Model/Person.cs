@@ -28,7 +28,11 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// <summary>
         /// Свойство для пола объекта
         /// </summary>
-        public Gender Gen { get => _gen; set => _gen = value; }
+        public Gender Gen 
+        { 
+            get => _gen; 
+            set => _gen = value; 
+        }
 
         /// <summary>
         /// Свойство для имени объекта
@@ -94,7 +98,11 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// <summary>
         /// Свойстыо для списка клонированных объектов
         /// </summary>
-        public static List<Person> Persons {get => _persons; private set => _persons = value; }
+        public static List<Person> Persons 
+        {
+            get => _persons; 
+            private set => _persons = value; 
+        }
 
         /// <summary>
         /// Конструктор с параметрами
@@ -112,7 +120,7 @@ namespace WinFormsApp_OOP_Lab3.Model
             Name = name;
             Height = height;
             Width = width;
-            Address = address;
+            Address = address ?? throw new NullReferenceException(nameof(_address));
             Age = age;
         }
 
@@ -141,7 +149,7 @@ namespace WinFormsApp_OOP_Lab3.Model
         /// Определяется наследуемым интерфейсом
         /// </summary>
         /// <returns> ссылака на текущий объект </returns>
-        public IPersonCloneable ShallowCopy()
+        public IPersonCloneable ShallowClone()
         {
             Person clonePerson = (Person)MemberwiseClone();
             Persons.Add(clonePerson);

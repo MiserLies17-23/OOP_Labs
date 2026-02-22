@@ -111,7 +111,7 @@ namespace WinFormsApp_OOP_Lab1
                         nameof(_person.Width), 
                        WidthTextBox.Text);
 
-                _person.Gen = (Gender)GenderComboBox.SelectedValue;
+                _person.Gen = GenderComboBox.SelectedValue is Gender gender ? gender : throw new NullReferenceException();
                 _person.Name = NameTextBox.Text;
                 _person.Height = Convert.ToDouble(HeightTextBox.Text);
                 _person.Width = Convert.ToDouble(WidthTextBox.Text);

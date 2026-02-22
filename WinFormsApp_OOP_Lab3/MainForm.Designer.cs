@@ -48,6 +48,7 @@
             ExitButton = new Button();
             ShallowCloneButton = new Button();
             ClonesDataGridView = new DataGridView();
+            IdColumn = new DataGridViewTextBoxColumn();
             NameColumn = new DataGridViewTextBoxColumn();
             CloneTypeColumn = new DataGridViewTextBoxColumn();
             ActionColumn = new DataGridViewButtonColumn();
@@ -227,14 +228,21 @@
             // 
             ClonesDataGridView.AllowUserToAddRows = false;
             ClonesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ClonesDataGridView.Columns.AddRange(new DataGridViewColumn[] { NameColumn, CloneTypeColumn, ActionColumn });
-            ClonesDataGridView.Location = new Point(172, 312);
+            ClonesDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, NameColumn, CloneTypeColumn, ActionColumn });
+            ClonesDataGridView.Location = new Point(117, 312);
             ClonesDataGridView.Name = "ClonesDataGridView";
             ClonesDataGridView.RowHeadersVisible = false;
             ClonesDataGridView.RowHeadersWidth = 51;
-            ClonesDataGridView.Size = new Size(428, 168);
+            ClonesDataGridView.Size = new Size(553, 168);
             ClonesDataGridView.TabIndex = 19;
             ClonesDataGridView.CellContentClick += ClonesDataGridView_CellContentClick;
+            // 
+            // IdColumn
+            // 
+            IdColumn.HeaderText = "Id";
+            IdColumn.MinimumWidth = 6;
+            IdColumn.Name = "IdColumn";
+            IdColumn.Width = 125;
             // 
             // NameColumn
             // 
@@ -263,7 +271,6 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             ClientSize = new Size(800, 528);
             Controls.Add(ClonesDataGridView);
             Controls.Add(ShallowCloneButton);
@@ -285,6 +292,8 @@
             Controls.Add(HeightTextBox);
             Controls.Add(GenTextBox);
             Controls.Add(NameTextBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "MainForm";
             Text = "Главная форма";
             Load += MainForm_Load;
@@ -315,6 +324,7 @@
         private Button ExitButton;
         private Button ShallowCloneButton;
         private DataGridView ClonesDataGridView;
+        private DataGridViewTextBoxColumn IdColumn;
         private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn CloneTypeColumn;
         private DataGridViewButtonColumn ActionColumn;

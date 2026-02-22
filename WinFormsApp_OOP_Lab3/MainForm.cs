@@ -68,12 +68,13 @@ namespace WinFormsApp_OOP_Lab3
             foreach (Person p in Person.Persons)
             {
                 int rowIndex = ClonesDataGridView.Rows.Add();
-                ClonesDataGridView.Rows[rowIndex].Cells[0].Value = p.ToString();
+                ClonesDataGridView.Rows[rowIndex].Cells[0].Value = Person.Persons.IndexOf(p);
+                ClonesDataGridView.Rows[rowIndex].Cells[1].Value = p.ToString();
                 if (p.Address == _person.Address)
-                    ClonesDataGridView.Rows[rowIndex].Cells[1].Value = "Неглубокое";
+                    ClonesDataGridView.Rows[rowIndex].Cells[2].Value = "Неглубокое";
                 else
-                    ClonesDataGridView.Rows[rowIndex].Cells[1].Value = "Глубокое";
-                ClonesDataGridView.Rows[rowIndex].Cells[2].Value = "Показать";
+                    ClonesDataGridView.Rows[rowIndex].Cells[2].Value = "Глубокое";
+                ClonesDataGridView.Rows[rowIndex].Cells[3].Value = "Показать";
             }
         }
 
@@ -132,7 +133,7 @@ namespace WinFormsApp_OOP_Lab3
         {
             try
             {
-                Person clonePerson = (Person)_person.ShallowCopy();
+                Person clonePerson = (Person)_person.ShallowClone();
                 ShowPersonData();
                 ShowAllClonePersons();
             }
@@ -155,7 +156,7 @@ namespace WinFormsApp_OOP_Lab3
         {
             try
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+                if (e.RowIndex >= 0 && e.ColumnIndex == 3)
                 {
                     Person p = Person.Persons.ElementAt(e.RowIndex);
                     CloneForm cloneForm = new(p);
