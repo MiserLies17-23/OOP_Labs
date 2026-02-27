@@ -4,6 +4,9 @@ using WinFormsApp_OOP_Lab5.Interpreter.NonTerminalExpression;
 
 namespace WinFormsApp_OOP_Lab5.Interpreter
 {
+    /// <summary>
+    /// Класс, преобразующий выражение в логическое значение
+    /// </summary>
     public class Parser
     {
         public IExpression Parse(SearchQuery query)

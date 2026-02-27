@@ -8,37 +8,37 @@
         /// <summary>
         /// Свойство - пол человека
         /// </summary>
-        public Gender Gen { get; set; }
+        public Gender Gen { get; private set; }
 
         /// <summary>
         /// Свойство - имя человека
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Свойство - рост человека
         /// </summary>
-        public double Height { get; set; }
+        public double Height { get; private set; }
 
         /// <summary>
         /// Свойство - вес человека
         /// </summary>
-        public double Weight { get; set; }
+        public double Weight { get; private set; }
 
         /// <summary>
         /// Свойство - страна проживания
         /// </summary>
-        public string Country { get; set; }
+        public string Country { get; private set; }
 
         /// <summary>
         /// Свойство - профессия
         /// </summary>
-        public Profession Profession { get; set; }
+        public Profession Profession { get; private set; }
 
         /// <summary>
         /// Свойство - возраст
         /// </summary>
-        public int Age { get; set; }
+        public int Age { get; private set; }
 
         /// <summary>
         /// Конструктор с параметрами

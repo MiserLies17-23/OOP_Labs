@@ -9,13 +9,23 @@ using WinFormsApp_OOP_Lab5.Utils;
 
 namespace WinFormsApp_OOP_Lab5
 {
+    /// <summary>
+    /// Главный UI-компнонент приложения
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary> Компнонент для инициализации значений ComboBox </summary>
         private readonly ComboBoxComponent _comboBoxComponent;
 
+        /// <summary> Список людей </summary>
         private readonly List<Person> _persons;
 
+        /// <summary> Парсер для преобразования логических выражений </summary>
         private readonly Parser _parser;
+        
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -24,13 +34,32 @@ namespace WinFormsApp_OOP_Lab5
             _parser = new();
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Бригада 13: Пономарёв П., Толстоухов В.\nВариант 13: Человек. Interpreter",
-                "Лабораторная работа №5");
-            ShowAllPersons();
+            try 
+            {
+                MessageBox.Show("Бригада 13: Пономарёв П., Толстоухов В.\nВариант 13: Человек. Interpreter",
+                    "Лабораторная работа №5");
+                ShowAllPersons(); 
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.MessageBox(
+                    Handle,
+                    ex.ToString(),
+                    "Ошибка загрузки формы",
+                    16);
+            }
         }
 
+        /// <summary>
+        /// Метод для отображения всех объектов Person
+        /// </summary>
         private void ShowAllPersons()
         {
             AllPersonsDataGridView.Rows.Clear();
@@ -46,6 +75,11 @@ namespace WinFormsApp_OOP_Lab5
             }
         }
 
+        /// <summary>
+        /// Обработчки событий для кнопки "Показать"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
         private void DataSridWiew_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -69,6 +103,13 @@ namespace WinFormsApp_OOP_Lab5
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Найти"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (форма) </param>
+        /// <param name="e"> событие </param>
+        /// <exception cref="ArgumentNullException"> ошибка не заданного значения </exception>
+        /// <exception cref="ArgumentException"> ошибка задания диапазона возрастов </exception>
         private void FindButton_Click(object sender, EventArgs e)
         {
             try
@@ -99,6 +140,10 @@ namespace WinFormsApp_OOP_Lab5
             }
         }
 
+        /// <summary>
+        /// Метод отображения результатов поиска
+        /// </summary>
+        /// <param name="expression"> выражение </param>
         private void DisplayResults(IExpression expression)
         {
             SuitPersonsDataGridView.Rows.Clear();
@@ -119,7 +164,12 @@ namespace WinFormsApp_OOP_Lab5
             if (SuitPersonsDataGridView.Rows.Count == 0)
                 MessageBox.Show("Людей, удовлетворяющих требованию, не найдено!");
         }
-
+        
+        /// <summary>
+        /// Обработчик событий для кнопки "Выйти"
+        /// </summary>
+        /// <param name="sender"> объект-отправитель (кнопка) </param>
+        /// <param name="e"> событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
