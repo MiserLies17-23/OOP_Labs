@@ -31,10 +31,16 @@
             TimeLabel = new Label();
             ExitButton = new Button();
             VectorPanel = new Panel();
+            SortingPanel = new Panel();
+            SortingHeader = new Label();
+            StatusValueLabel = new Label();
+            SortButton = new Button();
+            StatusLabel = new Label();
             MinVectorPanel = new Panel();
+            MinValueHeader = new Label();
             MinValueLabel = new Label();
             FoundButton = new Button();
-            MinValueHader = new Label();
+            MinimiumLabel = new Label();
             EventLabel = new Label();
             EventHeader = new Label();
             CreateButton = new Button();
@@ -45,7 +51,9 @@
             LengthLabel = new Label();
             LengthNumericUpDown = new NumericUpDown();
             VectorLabel = new Label();
+            HeaderLabel = new Label();
             VectorPanel.SuspendLayout();
+            SortingPanel.SuspendLayout();
             MinVectorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaxNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinNumericUpDown).BeginInit();
@@ -74,7 +82,8 @@
             // 
             // VectorPanel
             // 
-            VectorPanel.BorderStyle = BorderStyle.FixedSingle;
+            VectorPanel.BorderStyle = BorderStyle.Fixed3D;
+            VectorPanel.Controls.Add(SortingPanel);
             VectorPanel.Controls.Add(MinVectorPanel);
             VectorPanel.Controls.Add(EventLabel);
             VectorPanel.Controls.Add(EventHeader);
@@ -88,24 +97,87 @@
             VectorPanel.Controls.Add(VectorLabel);
             VectorPanel.Location = new Point(12, 102);
             VectorPanel.Name = "VectorPanel";
-            VectorPanel.Size = new Size(776, 235);
+            VectorPanel.Size = new Size(776, 301);
             VectorPanel.TabIndex = 2;
+            // 
+            // SortingPanel
+            // 
+            SortingPanel.BorderStyle = BorderStyle.FixedSingle;
+            SortingPanel.Controls.Add(SortingHeader);
+            SortingPanel.Controls.Add(StatusValueLabel);
+            SortingPanel.Controls.Add(SortButton);
+            SortingPanel.Controls.Add(StatusLabel);
+            SortingPanel.Enabled = false;
+            SortingPanel.Location = new Point(16, 120);
+            SortingPanel.Name = "SortingPanel";
+            SortingPanel.Size = new Size(738, 85);
+            SortingPanel.TabIndex = 10;
+            // 
+            // SortingHeader
+            // 
+            SortingHeader.AutoSize = true;
+            SortingHeader.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            SortingHeader.Location = new Point(308, 5);
+            SortingHeader.Name = "SortingHeader";
+            SortingHeader.Size = new Size(111, 23);
+            SortingHeader.TabIndex = 3;
+            SortingHeader.Text = "Сортировка";
+            // 
+            // StatusValueLabel
+            // 
+            StatusValueLabel.AutoSize = true;
+            StatusValueLabel.Location = new Point(59, 36);
+            StatusValueLabel.Name = "StatusValueLabel";
+            StatusValueLabel.Size = new Size(18, 20);
+            StatusValueLabel.TabIndex = 2;
+            StatusValueLabel.Text = "...";
+            // 
+            // SortButton
+            // 
+            SortButton.Location = new Point(308, 53);
+            SortButton.Name = "SortButton";
+            SortButton.Size = new Size(110, 29);
+            SortButton.TabIndex = 1;
+            SortButton.Text = "Сортировать";
+            SortButton.UseVisualStyleBackColor = true;
+            SortButton.Click += SortButton_Click;
+            // 
+            // StatusLabel
+            // 
+            StatusLabel.AutoSize = true;
+            StatusLabel.Location = new Point(3, 36);
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(55, 20);
+            StatusLabel.TabIndex = 0;
+            StatusLabel.Text = "Статус:";
             // 
             // MinVectorPanel
             // 
+            MinVectorPanel.BorderStyle = BorderStyle.FixedSingle;
+            MinVectorPanel.Controls.Add(MinValueHeader);
             MinVectorPanel.Controls.Add(MinValueLabel);
             MinVectorPanel.Controls.Add(FoundButton);
-            MinVectorPanel.Controls.Add(MinValueHader);
+            MinVectorPanel.Controls.Add(MinimiumLabel);
             MinVectorPanel.Enabled = false;
-            MinVectorPanel.Location = new Point(16, 146);
+            MinVectorPanel.Location = new Point(16, 211);
             MinVectorPanel.Name = "MinVectorPanel";
-            MinVectorPanel.Size = new Size(738, 67);
+            MinVectorPanel.Size = new Size(738, 85);
             MinVectorPanel.TabIndex = 3;
+            // 
+            // MinValueHeader
+            // 
+            MinValueHeader.AutoSize = true;
+            MinValueHeader.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            MinValueHeader.Location = new Point(265, 5);
+            MinValueHeader.Name = "MinValueHeader";
+            MinValueHeader.Size = new Size(191, 23);
+            MinValueHeader.TabIndex = 3;
+            MinValueHeader.Text = "Поиск минимального";
             // 
             // MinValueLabel
             // 
             MinValueLabel.AutoSize = true;
-            MinValueLabel.Location = new Point(113, 27);
+            MinValueLabel.Location = new Point(113, 36);
             MinValueLabel.Name = "MinValueLabel";
             MinValueLabel.Size = new Size(18, 20);
             MinValueLabel.TabIndex = 2;
@@ -113,7 +185,7 @@
             // 
             // FoundButton
             // 
-            FoundButton.Location = new Point(324, 23);
+            FoundButton.Location = new Point(317, 52);
             FoundButton.Name = "FoundButton";
             FoundButton.Size = new Size(94, 29);
             FoundButton.TabIndex = 1;
@@ -121,19 +193,19 @@
             FoundButton.UseVisualStyleBackColor = true;
             FoundButton.Click += FoundButton_Click;
             // 
-            // MinValueHader
+            // MinimiumLabel
             // 
-            MinValueHader.AutoSize = true;
-            MinValueHader.Location = new Point(3, 27);
-            MinValueHader.Name = "MinValueHader";
-            MinValueHader.Size = new Size(113, 20);
-            MinValueHader.TabIndex = 0;
-            MinValueHader.Text = "Минимальное:";
+            MinimiumLabel.AutoSize = true;
+            MinimiumLabel.Location = new Point(3, 36);
+            MinimiumLabel.Name = "MinimiumLabel";
+            MinimiumLabel.Size = new Size(113, 20);
+            MinimiumLabel.TabIndex = 0;
+            MinimiumLabel.Text = "Минимальное:";
             // 
             // EventLabel
             // 
             EventLabel.AutoSize = true;
-            EventLabel.Location = new Point(173, 43);
+            EventLabel.Location = new Point(160, 44);
             EventLabel.Name = "EventLabel";
             EventLabel.Size = new Size(18, 20);
             EventLabel.TabIndex = 9;
@@ -143,7 +215,7 @@
             // 
             EventHeader.AutoSize = true;
             EventHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            EventHeader.Location = new Point(16, 43);
+            EventHeader.Location = new Point(3, 44);
             EventHeader.Name = "EventHeader";
             EventHeader.Size = new Size(156, 20);
             EventHeader.TabIndex = 8;
@@ -151,7 +223,7 @@
             // 
             // CreateButton
             // 
-            CreateButton.Location = new Point(660, 88);
+            CreateButton.Location = new Point(660, 77);
             CreateButton.Name = "CreateButton";
             CreateButton.Size = new Size(94, 29);
             CreateButton.TabIndex = 7;
@@ -161,7 +233,7 @@
             // 
             // MaxNumericUpDown
             // 
-            MaxNumericUpDown.Location = new Point(544, 88);
+            MaxNumericUpDown.Location = new Point(543, 79);
             MaxNumericUpDown.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             MaxNumericUpDown.Name = "MaxNumericUpDown";
             MaxNumericUpDown.Size = new Size(100, 27);
@@ -171,7 +243,7 @@
             // MaxLabel
             // 
             MaxLabel.AutoSize = true;
-            MaxLabel.Location = new Point(418, 90);
+            MaxLabel.Location = new Point(417, 81);
             MaxLabel.Name = "MaxLabel";
             MaxLabel.Size = new Size(120, 20);
             MaxLabel.TabIndex = 5;
@@ -179,7 +251,7 @@
             // 
             // MinNumericUpDown
             // 
-            MinNumericUpDown.Location = new Point(307, 88);
+            MinNumericUpDown.Location = new Point(306, 79);
             MinNumericUpDown.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             MinNumericUpDown.Name = "MinNumericUpDown";
             MinNumericUpDown.Size = new Size(100, 27);
@@ -188,7 +260,7 @@
             // MinLabel
             // 
             MinLabel.AutoSize = true;
-            MinLabel.Location = new Point(185, 90);
+            MinLabel.Location = new Point(184, 81);
             MinLabel.Name = "MinLabel";
             MinLabel.Size = new Size(116, 20);
             MinLabel.TabIndex = 3;
@@ -197,7 +269,7 @@
             // LengthLabel
             // 
             LengthLabel.AutoSize = true;
-            LengthLabel.Location = new Point(16, 90);
+            LengthLabel.Location = new Point(15, 81);
             LengthLabel.Name = "LengthLabel";
             LengthLabel.Size = new Size(56, 20);
             LengthLabel.TabIndex = 2;
@@ -205,7 +277,7 @@
             // 
             // LengthNumericUpDown
             // 
-            LengthNumericUpDown.Location = new Point(78, 88);
+            LengthNumericUpDown.Location = new Point(77, 79);
             LengthNumericUpDown.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             LengthNumericUpDown.Name = "LengthNumericUpDown";
             LengthNumericUpDown.Size = new Size(100, 27);
@@ -222,19 +294,32 @@
             VectorLabel.TabIndex = 0;
             VectorLabel.Text = "Работа с вектором";
             // 
+            // HeaderLabel
+            // 
+            HeaderLabel.AutoSize = true;
+            HeaderLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            HeaderLabel.Location = new Point(171, 23);
+            HeaderLabel.Name = "HeaderLabel";
+            HeaderLabel.Size = new Size(486, 25);
+            HeaderLabel.TabIndex = 3;
+            HeaderLabel.Text = "Многопоточность и асинхронное программирование";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(HeaderLabel);
             Controls.Add(VectorPanel);
             Controls.Add(ExitButton);
             Controls.Add(TimeLabel);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "Главная форма";
             Load += MainForm_Load;
             VectorPanel.ResumeLayout(false);
             VectorPanel.PerformLayout();
+            SortingPanel.ResumeLayout(false);
+            SortingPanel.PerformLayout();
             MinVectorPanel.ResumeLayout(false);
             MinVectorPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MaxNumericUpDown).EndInit();
@@ -260,8 +345,15 @@
         private Label EventHeader;
         private Button CreateButton;
         private Panel MinVectorPanel;
-        private Label MinValueHader;
+        private Label MinimiumLabel;
         private Button FoundButton;
         private Label MinValueLabel;
+        private Label HeaderLabel;
+        private Label MinValueHeader;
+        private Panel SortingPanel;
+        private Label SortingHeader;
+        private Label StatusValueLabel;
+        private Button SortButton;
+        private Label StatusLabel;
     }
 }

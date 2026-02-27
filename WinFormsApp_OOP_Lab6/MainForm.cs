@@ -2,14 +2,14 @@ namespace WinFormsApp_OOP_Lab6
 {
     public partial class MainForm : Form
     {
-        
+
         private Timer _timer;
 
         private VectorAsync _vectorAsync;
 
         private AsyncEventProcessing _event;
 
-        private List<int> list;
+        private List<int> _list;
 
         public MainForm()
         {
@@ -17,7 +17,7 @@ namespace WinFormsApp_OOP_Lab6
             _timer = new(TimeLabel);
             _vectorAsync = new VectorAsync();
             _event = new AsyncEventProcessing(EventLabel, _vectorAsync);
-            list = [];
+            _list = [];
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -42,10 +42,13 @@ namespace WinFormsApp_OOP_Lab6
         {
             try
             {
+                SortingPanel.Enabled = false;
                 MinVectorPanel.Enabled = false;
-                list = await _vectorAsync.CreateVector((int)LengthNumericUpDown.Value, 
+                _list = await _vectorAsync.CreateVector((int)LengthNumericUpDown.Value,
                     (int)MinNumericUpDown.Value, (int)MaxNumericUpDown.Value);
+                StatusValueLabel.Text = await _vectorAsync.SortingCheck(_list) ? "Да" : "Нет";
                 MinVectorPanel.Enabled = true;
+                SortingPanel.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -62,8 +65,10 @@ namespace WinFormsApp_OOP_Lab6
             try
             {
                 CreateButton.Enabled = false;
-                int min = await _vectorAsync.FoundMinimum(list);
+                SortingPanel.Enabled = false;
+                int min = await _vectorAsync.FoundMinimum(_list);
                 MinValueLabel.Text = min.ToString();
+                SortingPanel.Enabled = true;
                 CreateButton.Enabled = true;
             }
             catch (Exception ex)
@@ -76,7 +81,28 @@ namespace WinFormsApp_OOP_Lab6
             }
         }
 
-        private void ExitButton_Click (object sender, EventArgs e)
+        private async void SortButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CreateButton.Enabled = false;
+                MinVectorPanel.Enabled = false;
+                await _vectorAsync.InclusiveSorting(_list);
+                StatusValueLabel.Text = await _vectorAsync.SortingCheck(_list) ? "Да" : "Нет";
+                MinVectorPanel.Enabled = true;
+                CreateButton.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.MessageBox(
+                    IntPtr.Zero,
+                    ex.ToString(),
+                    "Ошибка сортировки",
+                    16);
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
