@@ -3,8 +3,8 @@
 namespace WinFormsApp_OOP_Lab4.Exceptions
 {
     /// <summary>
-     /// Класс для корректного отображения ошибок 
-     /// </summary>
+    /// Класс для корректного отображения ошибок 
+    /// </summary>
     public class ExceptionHandler
     {
         /// <summary>

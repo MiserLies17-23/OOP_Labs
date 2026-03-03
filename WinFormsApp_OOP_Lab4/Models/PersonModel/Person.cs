@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Класс Человек
-    /// Реализует функционал интерфейса IPerson
+    /// реализует функционал интерфейса IPerson
     /// </summary>
     public class Person : IPerson
     {
@@ -44,13 +44,13 @@
         /// <summary>
         /// Конструктор с параметрами
         /// </summary>
-        /// <param name="gen"> пол </param>
-        /// <param name="name"> имя </param>
-        /// <param name="height"> рост </param>
-        /// <param name="width"> вес </param>
-        /// <param name="country"> страна </param>
-        /// <param name="city"> город </param>
-        /// <param name="age"> возраст </param>
+        /// <param name="gen"> Пол </param>
+        /// <param name="name"> Имя </param>
+        /// <param name="height"> Рост </param>
+        /// <param name="width"> Вес </param>
+        /// <param name="country"> Страна </param>
+        /// <param name="city"> Город </param>
+        /// <param name="age"> Возраст </param>
         public Person (Gender gen, string name, double height, double width, string country, string city, int age)
         {
             Gen = gen;
@@ -65,18 +65,16 @@
         /// <summary>
         /// Метод для вывода пола
         /// </summary>
-        /// <returns> строка - пол человека </returns>
+        /// <returns> Строка - пол человека </returns>
         public string GetGenderToString()
         {
-            if (Gen == Gender.MALE)
-                return "Муж";
-            return "Жен";
+            return Gen == Gender.MALE ? "Муж" : "Жен";
         }
 
         /// <summary>
-        /// Переопределённый метод ToString() для класса
+        /// Переопределенный метод ToString() для класса
         /// </summary>
-        /// <returns> имя человека </returns>
+        /// <returns> Имя человека </returns>
         public override string ToString()
         {
             return Name;

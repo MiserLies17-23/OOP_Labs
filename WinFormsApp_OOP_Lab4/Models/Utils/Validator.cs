@@ -1,6 +1,6 @@
 ﻿using WinFormsApp_OOP_Lab4.Exceptions;
 
-namespace WinFormsApp_OOP_Lab4.Utils
+namespace WinFormsApp_OOP_Lab4.Models.Utils
 {
     /// <summary>
     /// Статический утилитный класс для валидации данных человека
@@ -67,7 +67,7 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// <summary>
         /// Статический метод для валидации возраста
         /// </summary>
-        /// <param name="value"> Проверямое значение </param>
+        /// <param name="value"> Проверяемое значение </param>
         /// <exception cref="PersonValidationException"> Ошибка валидации </exception>
         public static void AgeValidation(int value)
         {

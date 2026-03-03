@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp_OOP_Lab4
+﻿namespace WinFormsApp_OOP_Lab4.Forms
 {
     partial class EditForm
     {

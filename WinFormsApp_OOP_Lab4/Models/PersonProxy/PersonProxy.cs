@@ -1,5 +1,5 @@
 ﻿using WinFormsApp_OOP_Lab4.Models.PersonModel;
-using WinFormsApp_OOP_Lab4.Utils;
+using WinFormsApp_OOP_Lab4.Models.Utils;
 
 namespace WinFormsApp_OOP_Lab4.Models.PersonProxy
 {

@@ -3,7 +3,7 @@ using WinFormsApp_OOP_Lab4.Exceptions;
 using WinFormsApp_OOP_Lab4.Models.PersonModel;
 using WinFormsApp_OOP_Lab4.Models.PersonProxy;
 
-namespace WinFormsApp_OOP_Lab4
+namespace WinFormsApp_OOP_Lab4.Forms
 {
     /// <summary>
     /// Класс, представляющий форму изменения данных человека
@@ -11,10 +11,10 @@ namespace WinFormsApp_OOP_Lab4
     public partial class EditForm : Form
     {
         /// <summary> Объект PersonProxy для безопасной работы с Person </summary>
-        private PersonProxy _personProxy;
+        private readonly PersonProxy _personProxy;
 
         /// <summary> Объект EventProcessing для отображения последних событий </summary>
-        private EventProcessing _eventProcessing;
+        private readonly EventProcessing _eventProcessing;
 
         /// <summary>
         /// Конструктор с параметрами
@@ -25,17 +25,17 @@ namespace WinFormsApp_OOP_Lab4
             InitializeComponent();
             _personProxy = personProxy;
             _eventProcessing = new(EventsLabel, _personProxy);
-            Load_ComboBox();
         }
 
         /// <summary>
         /// Обработчик событий для загрузки формы
         /// </summary>
-        /// <param name="sender"> объект-отпраивтель (форма) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект-отправитель (форма) </param>
+        /// <param name="e"> Событие </param>
         private void EditForm_Load(object sender, EventArgs e)
         {
             _eventProcessing.ShowFirstEvent();
+            Load_ComboBox();
             ShowEditData();
         }
 
@@ -57,7 +57,7 @@ namespace WinFormsApp_OOP_Lab4
         /// <summary>
         /// Метод для отображения данных человека
         /// </summary>
-        public void ShowEditData()
+        private void ShowEditData()
         {
             GenderComboBox.SelectedValue = _personProxy.Gen;
             NameTextBox.Text = _personProxy.Name;
@@ -71,31 +71,31 @@ namespace WinFormsApp_OOP_Lab4
         /// <summary>
         /// Обработчик события для кнопки "Сохранить"
         /// </summary>
-        /// <param name="sender"> объект-отправитель (кнопка) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!int.TryParse(AgeTextBox.Text, out int age))
+                if (!int.TryParse(AgeTextBox.Text, out _))
                     throw new PersonValidationException(
                         "Возраст должен быть числом!",
                         nameof(_personProxy.Age),
                         AgeTextBox.Text);
 
-                if (!float.TryParse(HeightTextBox.Text, out float height))
+                if (!float.TryParse(HeightTextBox.Text, out _))
                     throw new PersonValidationException(
                         "Рост должен быть числом!",
                         nameof(_personProxy.Height),
                         HeightTextBox.Text);
 
-                if (!float.TryParse(WidthTextBox.Text, out float weight))
+                if (!float.TryParse(WidthTextBox.Text, out _))
                     throw new PersonValidationException(
                         "Вес должен быть числом!",
                         nameof(_personProxy.Weight),
                        WidthTextBox.Text);
 
-                _personProxy.Gen = GenderComboBox.SelectedValue is Gender gender ? gender : throw new NullReferenceException();
+                _personProxy.Gen = GenderComboBox.SelectedValue is Gender gender ? gender : throw new ArgumentNullException();
                 _personProxy.Name = NameTextBox.Text;
                 _personProxy.Height = Convert.ToDouble(HeightTextBox.Text);
                 _personProxy.Weight = Convert.ToDouble(WidthTextBox.Text);
@@ -103,7 +103,7 @@ namespace WinFormsApp_OOP_Lab4
                 _personProxy.City = CityTextBox.Text;
                 _personProxy.Country = CountryTextBox.Text;
 
-                MessageBox.Show("Данные успешно обновлены!");
+                MessageBox.Show(@"Данные успешно обновлены!");
                 Close();
             }
             catch (PersonValidationException ex)
@@ -119,8 +119,8 @@ namespace WinFormsApp_OOP_Lab4
         /// <summary>
         /// События для кнопки "Назад"
         /// </summary>
-        /// <param name="sender"> объект, вызывающий событие </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект, вызывающий событие </param>
+        /// <param name="e"> Событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Close();

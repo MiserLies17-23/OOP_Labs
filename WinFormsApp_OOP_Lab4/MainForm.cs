@@ -1,23 +1,24 @@
 using WinFormsApp_OOP_Lab4.Components;
 using WinFormsApp_OOP_Lab4.Exceptions;
+using WinFormsApp_OOP_Lab4.Forms;
 using WinFormsApp_OOP_Lab4.Models.PersonProxy;
 
 namespace WinFormsApp_OOP_Lab4
 {
     /// <summary>
-    /// Главный UI-компонент приложения
-    /// Форма для отображения данных человека
+    /// Р“Р»Р°РІРЅС‹Р№ UI-РєРѕРјРїРѕРЅРµРЅС‚ РїСЂРёР»РѕР¶РµРЅРёСЏ
+    /// Р¤РѕСЂРјР° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РґР°РЅРЅС‹С… С‡РµР»РѕРІРµРєР°
     /// </summary>
     public partial class MainForm : Form
     {
-        /// <summary> Объект PersonProxy для безопасной работы с Person </summary>
+        /// <summary> РћР±СЉРµРєС‚ PersonProxy РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РґР°РЅРЅРЅС‹С… РІ Person </summary>
         private PersonProxy _personProxy;
 
-        /// <summary> Объект EventProcessing для отображения последних событий </summary>
+        /// <summary> РћР±СЉРµРєС‚ EventProcessing РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїРѕСЃР»РµРґРЅРёС… СЃРѕР±С‹С‚РёР№ </summary>
         private EventProcessing _eventProcessing;
 
         /// <summary>
-        /// Конструктор по умолчанию
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓСЃРѕР»С‡Р°РЅРёСЋ
         /// </summary>
         public MainForm()
         {
@@ -27,20 +28,20 @@ namespace WinFormsApp_OOP_Lab4
         }
 
         /// <summary>
-        /// Обработчик событий для загрузки формы
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РґР»СЏ Р·Р°РіСЂСѓР·РєРё С„РѕСЂРјС‹
         /// </summary>
-        /// <param name="sender"> объект-отправитель (форма) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> РѕР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (С„РѕСЂРјР°) </param>
+        /// <param name="e"> СЃРѕР±С‹С‚РёРµ </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Бригада №13: Пономарев П., Толстоухов В." +
-                "\n Вариант 13: Человек. Proxy", "Лабораторная работа №4");
+            MessageBox.Show("Р‘СЂРёРіР°РґР° в„–13: РџРѕРЅРѕРјР°СЂС‘РІ Рџ., РўРѕР»СЃС‚РѕСѓС…РѕРІ Р’." +
+                "\n Р’Р°СЂРёР°РЅС‚ 13: Р§РµР»РѕРІРµРє. Proxy", "Р›С„Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–4");
             _eventProcessing.ShowFirstEvent();
             ShowPersonData();
         }
 
         /// <summary>
-        /// Метод для отображения данных человека
+        /// РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РґР°РЅРЅС‹С… С‡РµР»РѕРІРµРєР°
         /// </summary>
         private void ShowPersonData()
         {
@@ -54,10 +55,10 @@ namespace WinFormsApp_OOP_Lab4
         }
 
         /// <summary>
-        /// Обработчик событий для кнопки "Изменить"
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РґР»СЏ РєРЅРѕРїРєРё "РР·РјРµРЅРёС‚СЊ"
         /// </summary>
-        /// <param name="sender"> объект-отправитель (кнопка) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (РєРЅРѕРїРєР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
         private void ChangeButton_Click(object sender, EventArgs e)
         {
             try
@@ -71,16 +72,16 @@ namespace WinFormsApp_OOP_Lab4
                 ExceptionHandler.MessageBox(
                     IntPtr.Zero,
                     ex.ToString(),
-                    "Ошибка изменения",
+                    "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
                     16);
             }
         }
 
         /// <summary>
-        /// Обработчик событий для кнопки "Выйти"
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РґР»СЏ РєРЅРѕРїРєРё "Р’С‹Р№С‚Рё"
         /// </summary>
-        /// <param name="sender"> объект-отправитель (кнопка) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (РєРЅРѕРїРєР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();

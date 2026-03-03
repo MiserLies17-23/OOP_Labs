@@ -1,6 +1,6 @@
 ﻿using WinFormsApp_OOP_Lab4.Models.PersonModel;
 
-namespace WinFormsApp_OOP_Lab4.Utils
+namespace WinFormsApp_OOP_Lab4.Models.Utils
 {
     /// <summary>
     /// Статический утилитный класс для генерации случайного объекта Person
@@ -15,17 +15,17 @@ namespace WinFormsApp_OOP_Lab4.Utils
 
         /// <summary> Статический массив мужских имён </summary>
         private static readonly string[] _MALE_NAMES =
-        {
+        [
             "Максим", "Михаил", "Андрей", "Александр", "Артём", "Павел", "Вадим", "Иван"
-        };
+        ];
 
         /// <summary> Статический массив женских имён </summary>
         private static readonly string[] _FEMALE_NAMES =
-        {
+        [
             "Елизавета", "Екатерина", "София", "Александра", "Евгения", "Наталья", "Елена", "Ольга"
-        };
+        ];
 
-        /// <summary> Статический массив женских имён </summary>
+        /// <summary> Статический словарь типа страна-город </summary>
         private static readonly Dictionary<string, string[]> _COUNTRY_CITY = new()
         {
             {"Россия", ["Москва", "Пенза", "Ростов", "Самара", "Саранск", "Владивосток"] },
@@ -66,7 +66,7 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// Статический метод для получения случайного веса 
         /// </summary>
         /// <returns> Случайный вес </returns>
-        private static double GetRamdomWidth()
+        private static double GetRandomWidth()
         {
             return _RND.Next(1, 250);
         }
@@ -75,7 +75,7 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// Статический метод для получения случайного роста
         /// </summary>
         /// <returns> Случайный рост </returns>
-        private static double GetRamdomHeight()
+        private static double GetRandomHeight()
         {
             return _RND.Next(1, 250);
         }
@@ -103,7 +103,7 @@ namespace WinFormsApp_OOP_Lab4.Utils
         /// <summary>
         /// Статический метод для получения случайного города
         /// </summary>
-        /// <param name="countryIndex"> индекс страны </param>
+        /// <param name="countryIndex"> Индекс страны </param>
         /// <returns> Случайный город для страны заданного индекса </returns>
         private static string GetRandomCity(int countryIndex)
         {
@@ -119,13 +119,9 @@ namespace WinFormsApp_OOP_Lab4.Utils
         public static Person CreateRandomPerson()
         {
             Gender gen = GetRandomGender();
-            string? name = "";
-            if (gen == Gender.MALE)
-                name = GetRandomMaleName();
-            else
-                name = GetRandomFemaleName();
-            double height = GetRamdomHeight();
-            double width = GetRamdomWidth();
+            string name = gen == Gender.MALE ? GetRandomMaleName() : GetRandomFemaleName();
+            double height = GetRandomHeight();
+            double width = GetRandomWidth();
             int age = GetRandomAge();
             string country = GetRandomCountry(out int index);
             string city = GetRandomCity(index);
