@@ -134,6 +134,12 @@ namespace WinFormsApp_OOP_Lab5.Utils
             return new Person(gen, name, height, width, country, profession, age);
         }
 
+        /// <summary>
+        /// Метод для возвращения всех людей
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static List<Person> GetPersons(int count = 100)
         {
             if (count <= 0)

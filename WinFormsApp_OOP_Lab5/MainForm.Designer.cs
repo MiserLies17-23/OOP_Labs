@@ -88,7 +88,7 @@
             AllPersonsDataGridView.ScrollBars = ScrollBars.Vertical;
             AllPersonsDataGridView.Size = new Size(626, 188);
             AllPersonsDataGridView.TabIndex = 1;
-            AllPersonsDataGridView.CellContentClick += DataSridWiew_CellContentClick;
+            AllPersonsDataGridView.CellContentClick += DataGridWiew_CellContentClick;
             // 
             // IdColumn
             // 
@@ -164,7 +164,7 @@
             SuitPersonsDataGridView.ScrollBars = ScrollBars.Vertical;
             SuitPersonsDataGridView.Size = new Size(626, 156);
             SuitPersonsDataGridView.TabIndex = 3;
-            SuitPersonsDataGridView.CellContentClick += DataSridWiew_CellContentClick;
+            SuitPersonsDataGridView.CellContentClick += DataGridWiew_CellContentClick;
             // 
             // CuitIdColumn
             // 

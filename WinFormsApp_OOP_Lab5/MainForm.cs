@@ -1,4 +1,4 @@
-using WinFormsApp_OOP_Lab5.Exceptions;
+п»їusing WinFormsApp_OOP_Lab5.Exceptions;
 using WinFormsApp_OOP_Lab5.Forms;
 using WinFormsApp_OOP_Lab5.Interpreter;
 using WinFormsApp_OOP_Lab5.Interpreter.NonTerminalExpression;
@@ -10,21 +10,21 @@ using WinFormsApp_OOP_Lab5.Utils;
 namespace WinFormsApp_OOP_Lab5
 {
     /// <summary>
-    /// Главный UI-компнонент приложения
+    /// Р“Р»Р°РІРЅС‹Р№ UI-РєРѕРјРїРѕРЅРµРЅС‚ РїСЂРёР»РѕР¶РµРЅРёСЏ
     /// </summary>
     public partial class MainForm : Form
     {
-        /// <summary> Компнонент для инициализации значений ComboBox </summary>
+        /// <summary> РљРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ ComboBox </summary>
         private readonly ComboBoxComponent _comboBoxComponent;
 
-        /// <summary> Список людей </summary>
+        /// <summary> РЎРїРёСЃРѕРє Р»СЋРґРµР№ </summary>
         private readonly List<Person> _persons;
 
-        /// <summary> Парсер для преобразования логических выражений </summary>
+        /// <summary> РљР»Р°СЃСЃ РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІС‹СЂР°Р¶РµРЅРёР№ </summary>
         private readonly Parser _parser;
         
         /// <summary>
-        /// Конструктор по умолчанию
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         /// </summary>
         public MainForm()
         {
@@ -35,16 +35,16 @@ namespace WinFormsApp_OOP_Lab5
         }
 
         /// <summary>
-        /// Обработчик событий для загрузки формы
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РґР»СЏ Р·Р°РіСЂСѓР·РєРё С„РѕСЂРјС‹
         /// </summary>
-        /// <param name="sender"> объект-отправитель (форма) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (С„РѕСЂРјР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             try 
             {
-                MessageBox.Show("Бригада 13: Пономарёв П., Толстоухов В.\nВариант 13: Человек. Interpreter",
-                    "Лабораторная работа №5");
+                MessageBox.Show("Р‘СЂРёРіР°РґР° 13: РџРѕРЅРѕРјР°СЂРµРІ Рџ., РўРѕР»СЃС‚РѕСѓС…РѕРІ Р’.\nР’Р°СЂРёР°РЅС‚ 13: Р§РµР»РѕРІРµРє. Interpreter",
+                    "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–5");
                 ShowAllPersons(); 
             }
             catch (Exception ex)
@@ -52,13 +52,13 @@ namespace WinFormsApp_OOP_Lab5
                 ExceptionHandler.MessageBox(
                     Handle,
                     ex.ToString(),
-                    "Ошибка загрузки формы",
+                    "РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„РѕСЂРјС‹",
                     16);
             }
         }
 
         /// <summary>
-        /// Метод для отображения всех объектов Person
+        /// РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ Person
         /// </summary>
         private void ShowAllPersons()
         {
@@ -66,21 +66,22 @@ namespace WinFormsApp_OOP_Lab5
             foreach (Person person in _persons)
             {
                 int rowIndex = AllPersonsDataGridView.Rows.Add();
-                AllPersonsDataGridView.Rows[rowIndex].Cells[0].Value = _persons.IndexOf(person);
-                AllPersonsDataGridView.Rows[rowIndex].Cells[1].Value = person.GetGenderToString();
-                AllPersonsDataGridView.Rows[rowIndex].Cells[2].Value = person.ToString();
-                AllPersonsDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
-                AllPersonsDataGridView.Rows[rowIndex].Cells[4].Value = person.GetProfessionToString();
-                AllPersonsDataGridView.Rows[rowIndex].Cells[5].Value = "Показать";
+                int i = 0;
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i++].Value = _persons.IndexOf(person);
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i++].Value = person.GetGenderToString();
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i++].Value = person.ToString();
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i++].Value = person.Age;
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i++].Value = person.GetProfessionToString();
+                AllPersonsDataGridView.Rows[rowIndex].Cells[i].Value = "РџРѕСЃРјРѕС‚СЂРµС‚СЊ";
             }
         }
 
         /// <summary>
-        /// Обработчки событий для кнопки "Показать"
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РґР»СЏ РєРЅРѕРїРєРё "РџРѕРєР°Р·Р°С‚СЊ" С‚Р°Р±Р»РёС†С‹
         /// </summary>
-        /// <param name="sender"> объект-отправитель (форма) </param>
-        /// <param name="e"> событие </param>
-        private void DataSridWiew_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (С„РѕСЂРјР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
+        private void DataGridWiew_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -98,34 +99,34 @@ namespace WinFormsApp_OOP_Lab5
                 ExceptionHandler.MessageBox(
                     Handle,
                     ex.ToString(),
-                    "Ошибка",
+                    "РћС€РёР±РєР°",
                     16);
             }
         }
 
         /// <summary>
-        /// Обработчик событий для кнопки "Найти"
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РґР»СЏ РєРЅРѕРїРєРё "РќР°Р№С‚Рё"
         /// </summary>
-        /// <param name="sender"> объект-отправитель (форма) </param>
-        /// <param name="e"> событие </param>
-        /// <exception cref="ArgumentNullException"> ошибка не заданного значения </exception>
-        /// <exception cref="ArgumentException"> ошибка задания диапазона возрастов </exception>
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (РєРЅРѕРїРєР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
+        /// <exception cref="ArgumentNullException"> РћС€РёР±РєР° РЅСѓР»РµРІРѕРіРѕ Р°СЂРіСѓРјРµРЅС‚Р° РґР»СЏ РїРѕР»РµР№ РєР»Р°СЃСЃР° </exception>
+        /// <exception cref="ArgumentException"> РћС€РёР±РєР° РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРіРѕ Р°СЂРіСѓРјРµРЅС‚Р° РґР»СЏ РЅРµСЃСЃС‹Р»РѕС‡РЅС‹С… РїРѕР»РµР№ РєР»Р°СЃСЃР° </exception>
         private void FindButton_Click(object sender, EventArgs e)
         {
             try
             {
                 SearchQuery sq = new();
                 sq.Gender = GenderComboBox.SelectedValue is Gender gender 
-                    ? gender : throw new ArgumentNullException("Пол не выбран!");
+                    ? gender : throw new ArgumentNullException("РџРѕР» РЅРµ Р·Р°РґР°РЅ!");
                 sq.FirstOperation = NonTermComboBox1.SelectedValue is Operation op1 
-                    ? op1 : throw new ArgumentNullException("Первый оператор не выбран!");
+                    ? op1 : throw new ArgumentNullException("РџРµСЂРІС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РЅРµ Р·Р°РґР°РЅ!");
                 sq.Age = (int)AgeDownNumericUpDown.Value <= (int)AgeTopNumericUpDown.Value
                     ? new AgeRange((int)AgeDownNumericUpDown.Value, (int)AgeTopNumericUpDown.Value)
-                    : throw new ArgumentException("Верхняя граница возраста не может быть меньше нижней!");
+                    : throw new ArgumentException("РќРёР¶РЅСЏСЏ РіСЂР°РЅРёС†Р° РІРѕР·СЂР°СЃС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРёР¶Рµ РІРµСЂС…РЅРµР№!");
                 sq.SecondOperation = NonTermComboBox2.SelectedValue is Operation op2 
-                    ? op2 : throw new ArgumentNullException("Второй оператор не выбран!");
+                    ? op2 : throw new ArgumentNullException("Р’С‚РѕСЂРѕР№ РѕРїРµСЂР°С‚РѕСЂ РЅРµ Р·Р°РґР°РЅ!");
                 sq.Profession = ProfessionComboBox.SelectedValue is Profession prof 
-                    ? prof : throw new ArgumentNullException("Профессия не выбрана!");
+                    ? prof : throw new ArgumentNullException("РџСЂРѕС„РµСЃСЃРёСЏ РЅРµ Р·Р°РґР°РЅР°!");
 
                 IExpression expression = _parser.Parse(sq);
                 DisplayResults(expression);
@@ -135,15 +136,15 @@ namespace WinFormsApp_OOP_Lab5
                 ExceptionHandler.MessageBox(
                     Handle,
                     ex.ToString(),
-                    "Ошибка поиска",
+                    "РћС€РёР±РєР° РїРѕРёСЃРєР°",
                     16);
             }
         }
 
         /// <summary>
-        /// Метод отображения результатов поиска
+        /// РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР°
         /// </summary>
-        /// <param name="expression"> выражение </param>
+        /// <param name="expression"> Р’С‹СЂР°Р¶РµРЅРёРµ </param>
         private void DisplayResults(IExpression expression)
         {
             SuitPersonsDataGridView.Rows.Clear();
@@ -158,18 +159,18 @@ namespace WinFormsApp_OOP_Lab5
                     SuitPersonsDataGridView.Rows[rowIndex].Cells[2].Value = person.ToString();
                     SuitPersonsDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
                     SuitPersonsDataGridView.Rows[rowIndex].Cells[4].Value = person.GetProfessionToString();
-                    SuitPersonsDataGridView.Rows[rowIndex].Cells[5].Value = "Показать";
+                    SuitPersonsDataGridView.Rows[rowIndex].Cells[5].Value = "РџРѕРєР°Р·Р°С‚СЊ";
                 }
             }
             if (SuitPersonsDataGridView.Rows.Count == 0)
-                MessageBox.Show("Людей, удовлетворяющих требованию, не найдено!");
+                MessageBox.Show("Р›СЋРґРµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… РІС‹СЂР°Р¶РµРЅРёСЋ, РЅРµ РЅР°Р№РґРµРЅРѕ!");
         }
         
         /// <summary>
-        /// Обработчик событий для кнопки "Выйти"
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РґР»СЏ РєРЅРѕРїРєРё "Р’С‹Р№С‚Рё"
         /// </summary>
-        /// <param name="sender"> объект-отправитель (кнопка) </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> РћР±СЉРµРєС‚-РѕС‚РїСЂР°РІРёС‚РµР»СЊ (РєРЅРѕРїРєР°) </param>
+        /// <param name="e"> РЎРѕР±С‹С‚РёРµ </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
