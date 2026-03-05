@@ -52,19 +52,32 @@
             LengthNumericUpDown = new NumericUpDown();
             VectorLabel = new Label();
             HeaderLabel = new Label();
+            RangeLabel = new Label();
+            GenerateButton = new Button();
+            RandomNumberHeader = new Label();
+            DownNumericUpDown = new NumericUpDown();
+            TopNumericUpDown = new NumericUpDown();
+            TopLabel = new Label();
+            RandomPanel = new Panel();
+            RandomValueLabel = new Label();
+            RandomNumberLabel = new Label();
+            Downlabel = new Label();
             VectorPanel.SuspendLayout();
             SortingPanel.SuspendLayout();
             MinVectorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaxNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)LengthNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DownNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TopNumericUpDown).BeginInit();
+            RandomPanel.SuspendLayout();
             SuspendLayout();
             // 
             // TimeLabel
             // 
             TimeLabel.AutoSize = true;
             TimeLabel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            TimeLabel.Location = new Point(16, 67);
+            TimeLabel.Location = new Point(16, 60);
             TimeLabel.Name = "TimeLabel";
             TimeLabel.Size = new Size(69, 23);
             TimeLabel.TabIndex = 0;
@@ -72,7 +85,7 @@
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(12, 409);
+            ExitButton.Location = new Point(12, 515);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(94, 29);
             ExitButton.TabIndex = 1;
@@ -97,7 +110,7 @@
             VectorPanel.Controls.Add(VectorLabel);
             VectorPanel.Location = new Point(12, 102);
             VectorPanel.Name = "VectorPanel";
-            VectorPanel.Size = new Size(776, 301);
+            VectorPanel.Size = new Size(776, 305);
             VectorPanel.TabIndex = 2;
             // 
             // SortingPanel
@@ -304,11 +317,113 @@
             HeaderLabel.TabIndex = 3;
             HeaderLabel.Text = "Многопоточность и асинхронное программирование";
             // 
+            // RangeLabel
+            // 
+            RangeLabel.AutoSize = true;
+            RangeLabel.Location = new Point(168, 33);
+            RangeLabel.Name = "RangeLabel";
+            RangeLabel.Size = new Size(81, 20);
+            RangeLabel.TabIndex = 0;
+            RangeLabel.Text = "Диапазон:";
+            // 
+            // GenerateButton
+            // 
+            GenerateButton.Location = new Point(290, 61);
+            GenerateButton.Name = "GenerateButton";
+            GenerateButton.Size = new Size(139, 29);
+            GenerateButton.TabIndex = 1;
+            GenerateButton.Text = "Сгенерировать";
+            GenerateButton.UseVisualStyleBackColor = true;
+            GenerateButton.Click += GenerateButton_Click;
+            // 
+            // RandomNumberHeader
+            // 
+            RandomNumberHeader.AutoSize = true;
+            RandomNumberHeader.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            RandomNumberHeader.Location = new Point(245, 5);
+            RandomNumberHeader.Name = "RandomNumberHeader";
+            RandomNumberHeader.Size = new Size(246, 23);
+            RandomNumberHeader.TabIndex = 3;
+            RandomNumberHeader.Text = "Генерация случайных чисел";
+            // 
+            // DownNumericUpDown
+            // 
+            DownNumericUpDown.Location = new Point(266, 29);
+            DownNumericUpDown.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            DownNumericUpDown.Minimum = new decimal(new int[] { 100000, 0, 0, int.MinValue });
+            DownNumericUpDown.Name = "DownNumericUpDown";
+            DownNumericUpDown.Size = new Size(69, 27);
+            DownNumericUpDown.TabIndex = 16;
+            // 
+            // TopNumericUpDown
+            // 
+            TopNumericUpDown.Location = new Point(353, 31);
+            TopNumericUpDown.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            TopNumericUpDown.Minimum = new decimal(new int[] { 100000, 0, 0, int.MinValue });
+            TopNumericUpDown.Name = "TopNumericUpDown";
+            TopNumericUpDown.Size = new Size(69, 27);
+            TopNumericUpDown.TabIndex = 17;
+            TopNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            // 
+            // TopLabel
+            // 
+            TopLabel.AutoSize = true;
+            TopLabel.Location = new Point(423, 33);
+            TopLabel.Name = "TopLabel";
+            TopLabel.Size = new Size(14, 20);
+            TopLabel.TabIndex = 18;
+            TopLabel.Text = "]";
+            // 
+            // RandomPanel
+            // 
+            RandomPanel.BorderStyle = BorderStyle.FixedSingle;
+            RandomPanel.Controls.Add(RandomValueLabel);
+            RandomPanel.Controls.Add(RandomNumberLabel);
+            RandomPanel.Controls.Add(Downlabel);
+            RandomPanel.Controls.Add(TopLabel);
+            RandomPanel.Controls.Add(TopNumericUpDown);
+            RandomPanel.Controls.Add(DownNumericUpDown);
+            RandomPanel.Controls.Add(RandomNumberHeader);
+            RandomPanel.Controls.Add(GenerateButton);
+            RandomPanel.Controls.Add(RangeLabel);
+            RandomPanel.Location = new Point(29, 413);
+            RandomPanel.Name = "RandomPanel";
+            RandomPanel.Size = new Size(738, 95);
+            RandomPanel.TabIndex = 11;
+            // 
+            // RandomValueLabel
+            // 
+            RandomValueLabel.AutoSize = true;
+            RandomValueLabel.Location = new Point(542, 33);
+            RandomValueLabel.Name = "RandomValueLabel";
+            RandomValueLabel.Size = new Size(18, 20);
+            RandomValueLabel.TabIndex = 21;
+            RandomValueLabel.Text = "...";
+            // 
+            // RandomNumberLabel
+            // 
+            RandomNumberLabel.AutoSize = true;
+            RandomNumberLabel.Location = new Point(492, 33);
+            RandomNumberLabel.Name = "RandomNumberLabel";
+            RandomNumberLabel.Size = new Size(59, 20);
+            RandomNumberLabel.TabIndex = 20;
+            RandomNumberLabel.Text = "Число: ";
+            // 
+            // Downlabel
+            // 
+            Downlabel.AutoSize = true;
+            Downlabel.Location = new Point(250, 33);
+            Downlabel.Name = "Downlabel";
+            Downlabel.Size = new Size(14, 20);
+            Downlabel.TabIndex = 19;
+            Downlabel.Text = "[";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 550);
+            Controls.Add(RandomPanel);
             Controls.Add(HeaderLabel);
             Controls.Add(VectorPanel);
             Controls.Add(ExitButton);
@@ -325,6 +440,10 @@
             ((System.ComponentModel.ISupportInitialize)MaxNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)LengthNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DownNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TopNumericUpDown).EndInit();
+            RandomPanel.ResumeLayout(false);
+            RandomPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -355,5 +474,15 @@
         private Label StatusValueLabel;
         private Button SortButton;
         private Label StatusLabel;
+        private Label RangeLabel;
+        private Button GenerateButton;
+        private Label RandomNumberHeader;
+        private NumericUpDown DownNumericUpDown;
+        private NumericUpDown TopNumericUpDown;
+        private Label TopLabel;
+        private Panel RandomPanel;
+        private Label RandomNumberLabel;
+        private Label Downlabel;
+        private Label RandomValueLabel;
     }
 }

@@ -1,10 +1,20 @@
 ﻿namespace WinFormsApp_OOP_Lab6
 {
+    /// <summary>
+    /// Класс для асинхронной работы с вектором
+    /// </summary>
     public class VectorAsync
     {
-        
+        /// <summary> Событие о каком-либо действии </summary>
         public event EventHandler<string>? SomeAction;
 
+        /// <summary>
+        /// Асинхронный метод для создания вектора
+        /// </summary>
+        /// <param name="length"> длина </param>
+        /// <param name="min"> значение минимального элемента </param>
+        /// <param name="max"> значение максимального элемента </param>
+        /// <returns> вектор </returns>
         public async Task<List<int>> CreateVector(int length, int min, int max)
         {
             Random rnd = new();
@@ -22,6 +32,11 @@
             });
         }
 
+        /// <summary>
+        /// Асинхронный метод для поиска минимального
+        /// </summary>
+        /// <param name="list"> вектор </param>
+        /// <returns> минимальный элемент вектора </returns>
         public async Task<int> FoundMinimum(List<int> list)
         {
             return await Task.Run(() =>
@@ -41,6 +56,11 @@
             });
         }
 
+        /// <summary>
+        /// Асинхронный метод для сортировки вектора
+        /// </summary>
+        /// <param name="list"> вектор </param>
+        /// <returns></returns>
         public async Task InclusiveSorting(List<int> list)
         {
             await Task.Run(() =>
@@ -70,6 +90,11 @@
             });
         }
 
+        /// <summary>
+        /// Асинхронный метод для првоерки сортированности
+        /// </summary>
+        /// <param name="list"> вектор </param>
+        /// <returns> true - если сортирован, иначе - false </returns>
         public async Task<bool> SortingCheck(List<int> list)
         {
             return await Task.Run(() =>

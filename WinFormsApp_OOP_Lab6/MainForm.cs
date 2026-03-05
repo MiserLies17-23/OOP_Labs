@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace WinFormsApp_OOP_Lab6
 {
     public partial class MainForm : Form
@@ -5,9 +7,9 @@ namespace WinFormsApp_OOP_Lab6
 
         private Timer _timer;
 
-        private VectorAsync _vectorAsync;
+        private AsyncVector _vectorAsync;
 
-        private AsyncEventProcessing _event;
+        private EventProcessing _event;
 
         private List<int> _list;
 
@@ -15,8 +17,8 @@ namespace WinFormsApp_OOP_Lab6
         {
             InitializeComponent();
             _timer = new(TimeLabel);
-            _vectorAsync = new VectorAsync();
-            _event = new AsyncEventProcessing(EventLabel, _vectorAsync);
+            _vectorAsync = new AsyncVector();
+            _event = new EventProcessing(EventLabel, _vectorAsync);
             _list = [];
         }
 
@@ -31,7 +33,7 @@ namespace WinFormsApp_OOP_Lab6
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка загрузки",
                     16);
@@ -53,7 +55,7 @@ namespace WinFormsApp_OOP_Lab6
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка создания вектора",
                     16);
@@ -74,7 +76,7 @@ namespace WinFormsApp_OOP_Lab6
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка поиска минимального",
                     16);
@@ -95,7 +97,7 @@ namespace WinFormsApp_OOP_Lab6
             catch (Exception ex)
             {
                 ExceptionHandler.MessageBox(
-                    IntPtr.Zero,
+                    Handle,
                     ex.ToString(),
                     "Ошибка сортировки",
                     16);
@@ -105,6 +107,27 @@ namespace WinFormsApp_OOP_Lab6
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void GenerateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int down = (int)DownNumericUpDown.Value;
+                int top = (int)TopNumericUpDown.Value;
+                if (down >= top)
+                    throw new ArgumentException("Нижняя границе не может быть выше верхней!");
+                int value = await AsyncRandomValueGenerator.Generate(down, top);
+                RandomValueLabel.Text = value.ToString();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.MessageBox(
+                    Handle,
+                    ex.ToString(),
+                    "Ошибка генерации случайного значения",
+                    16);
+            }
         }
     }
 }
