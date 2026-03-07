@@ -37,6 +37,7 @@
             EditColumn = new DataGridViewButtonColumn();
             DeleteColumn = new DataGridViewButtonColumn();
             AddButton = new Button();
+            MVCHeader = new Label();
             ((System.ComponentModel.ISupportInitialize)PersonDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(326, 314);
+            AddButton.Location = new Point(344, 310);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 2;
@@ -118,11 +119,22 @@
             AddButton.UseVisualStyleBackColor = true;
             AddButton.Click += AddButton_Click;
             // 
+            // MVCHeader
+            // 
+            MVCHeader.AutoSize = true;
+            MVCHeader.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            MVCHeader.Location = new Point(277, 47);
+            MVCHeader.Name = "MVCHeader";
+            MVCHeader.Size = new Size(245, 25);
+            MVCHeader.TabIndex = 3;
+            MVCHeader.Text = "Реализация паттерна MVC";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 413);
+            Controls.Add(MVCHeader);
             Controls.Add(AddButton);
             Controls.Add(PersonDataGridView);
             Controls.Add(ExitButton);
@@ -131,6 +143,7 @@
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)PersonDataGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -144,5 +157,6 @@
         private DataGridViewButtonColumn EditColumn;
         private DataGridViewButtonColumn DeleteColumn;
         private Button AddButton;
+        private Label MVCHeader;
     }
 }

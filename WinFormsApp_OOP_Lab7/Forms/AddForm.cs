@@ -4,16 +4,29 @@ using WinFormsApp_OOP_Lab7.Utils;
 
 namespace WinFormsApp_OOP_Lab7.Forms
 {
+    /// <summary>
+    /// Форма добавления нового человекаЫ
+    /// </summary>
     public partial class AddForm : Form
     {
+        /// <summary> Объект PersonController для эффективного взаимодействия с моделью </summary>
         private PersonController _personController;
 
+        /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        /// <param name="personController"> Контроллер </param>
         public AddForm(PersonController personController)
         {
             InitializeComponent();
             _personController = personController;
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (форма) </param>
+        /// <param name="e"></param>
         private void AddForm_Load(object sender, EventArgs e)
         {
             Load_ComboBox();
@@ -35,6 +48,12 @@ namespace WinFormsApp_OOP_Lab7.Forms
             GenderComboBox.ValueMember = "Key";
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Добавить"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
+        /// <exception cref="ArgumentException"> Исключение неверного аргументо </exception>
         private void AddButton_Click(object sender, EventArgs e)
         {
             try
@@ -54,12 +73,17 @@ namespace WinFormsApp_OOP_Lab7.Forms
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка добавления",
                     16);
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Выйти"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Close();
