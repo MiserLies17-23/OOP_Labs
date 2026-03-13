@@ -2,10 +2,14 @@
 
 namespace WinFormsApp_OOP_Lab7.Repository
 {
+    /// <summary>
+    /// Репозиторий объектов Person
+    /// Реализует методы IPersonRepository
+    /// </summary>
     public class PersonRepository : IPersonRepository
     {
         /// <summary> Список объектов Person </summary>
-        private List<Person> _persons;
+        private readonly List<Person> _persons;
 
         /// <summary>
         /// Конструктор по умолчанию

@@ -31,8 +31,8 @@
             ExitButton = new Button();
             PersonDataGridView = new DataGridView();
             IdColumn = new DataGridViewTextBoxColumn();
-            NameColumn = new DataGridViewTextBoxColumn();
             GenderColumn = new DataGridViewTextBoxColumn();
+            NameColumn = new DataGridViewTextBoxColumn();
             AgeColumn = new DataGridViewTextBoxColumn();
             EditColumn = new DataGridViewButtonColumn();
             DeleteColumn = new DataGridViewButtonColumn();
@@ -58,12 +58,12 @@
             PersonDataGridView.AllowUserToResizeColumns = false;
             PersonDataGridView.AllowUserToResizeRows = false;
             PersonDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PersonDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, NameColumn, GenderColumn, AgeColumn, EditColumn, DeleteColumn });
+            PersonDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, GenderColumn, NameColumn, AgeColumn, EditColumn, DeleteColumn });
             PersonDataGridView.Location = new Point(60, 104);
             PersonDataGridView.Name = "PersonDataGridView";
             PersonDataGridView.RowHeadersVisible = false;
             PersonDataGridView.RowHeadersWidth = 51;
-            PersonDataGridView.Size = new Size(653, 188);
+            PersonDataGridView.Size = new Size(655, 188);
             PersonDataGridView.TabIndex = 1;
             PersonDataGridView.CellClick += PersonDataGridView_CellContentClick;
             // 
@@ -72,7 +72,14 @@
             IdColumn.HeaderText = "Id";
             IdColumn.MinimumWidth = 6;
             IdColumn.Name = "IdColumn";
-            IdColumn.Width = 75;
+            IdColumn.Width = 65;
+            // 
+            // GenderColumn
+            // 
+            GenderColumn.HeaderText = "Пол";
+            GenderColumn.MinimumWidth = 6;
+            GenderColumn.Name = "GenderColumn";
+            GenderColumn.Width = 65;
             // 
             // NameColumn
             // 
@@ -80,13 +87,6 @@
             NameColumn.MinimumWidth = 6;
             NameColumn.Name = "NameColumn";
             NameColumn.Width = 125;
-            // 
-            // GenderColumn
-            // 
-            GenderColumn.HeaderText = "Пол";
-            GenderColumn.MinimumWidth = 6;
-            GenderColumn.Name = "GenderColumn";
-            GenderColumn.Width = 75;
             // 
             // AgeColumn
             // 
@@ -150,13 +150,13 @@
 
         private Button ExitButton;
         private DataGridView PersonDataGridView;
+        private Button AddButton;
+        private Label MVCHeader;
         private DataGridViewTextBoxColumn IdColumn;
-        private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn GenderColumn;
+        private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn AgeColumn;
         private DataGridViewButtonColumn EditColumn;
         private DataGridViewButtonColumn DeleteColumn;
-        private Button AddButton;
-        private Label MVCHeader;
     }
 }

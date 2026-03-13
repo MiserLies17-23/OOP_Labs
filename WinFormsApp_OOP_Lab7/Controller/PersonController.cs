@@ -35,7 +35,7 @@ namespace WinFormsApp_OOP_Lab7.Controller
             return persons.Select(p => new PersonDTO
             {
                 Id = p.Id,
-                Gender = p.Gender,
+                Gender = p.GetGenderToString(),
                 Name = p.Name,
                 Age = p.Age
             }).ToList();
@@ -63,7 +63,7 @@ namespace WinFormsApp_OOP_Lab7.Controller
             return new PersonDTO
             {
                 Id = id,
-                Gender = person.Gender,
+                Gender = person.GetGenderToString(),
                 Name = person.Name,
                 Age = person.Age
             };

@@ -15,7 +15,7 @@ namespace WinFormsApp_OOP_Lab7.DTO
         /// <summary>
         /// Пол модели
         /// </summary>
-        public Gender Gender { get; set; }
+        public string? Gender { get; set; }
 
         /// <summary>
         /// Имя модели
@@ -26,6 +26,7 @@ namespace WinFormsApp_OOP_Lab7.DTO
         /// Возраст модели
         /// </summary>
         public int Age { get; set; }
+
 
     }
 }

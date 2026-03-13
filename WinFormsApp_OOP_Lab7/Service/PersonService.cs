@@ -11,14 +11,14 @@ namespace WinFormsApp_OOP_Lab7.Service
     public class PersonService
     {
         /// <summary> Репозиторий объектов Person </summary>
-        private PersonRepository _repository;
+        private readonly PersonRepository _repository;
 
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         public PersonService()
         {
-            _repository = new();
+            _repository = new(PersonRandomGenerator.GetPersons());
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace WinFormsApp_OOP_Lab7.Service
         public List<Person> GetAll()
         {
             return _repository.GetAll() 
-                ?? [];        
+                ?? [];     
         }
     }
 }

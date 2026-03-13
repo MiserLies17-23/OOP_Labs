@@ -29,7 +29,7 @@ namespace WinFormsApp_OOP_Lab7.Repository
         /// <summary>
         /// Метод для удаления объекта Person по Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id"> Id </param>
         void Delete(int id);
     }
 }

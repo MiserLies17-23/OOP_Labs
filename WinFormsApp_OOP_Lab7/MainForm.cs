@@ -95,8 +95,16 @@ namespace WinFormsApp_OOP_Lab7
                 }
                 if (e.RowIndex >= 0 && e.ColumnIndex == 5)
                 {
-                    int personIndex = e.RowIndex;
-                    _personController.DeletePerson(personIndex);
+                    DialogResult result = MessageBox.Show("Вы действительно хотите удалить объект?",
+                        "Согласие на удаление",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information, 
+                        MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Yes)
+                    {
+                        int personIndex = e.RowIndex;
+                        _personController.DeletePerson(personIndex);
+                    }
                     ShowAllPersons();
                 }
             }

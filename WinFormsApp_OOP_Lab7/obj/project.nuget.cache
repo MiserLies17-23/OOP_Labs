@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xPcSddgJQ8E=",
+  "dgSpecHash": "0+q4n4LtbIU=",
   "success": true,
   "projectFilePath": "C:\\Users\\THUNDEROBOT\\source\\repos\\WinFormsApp_OOP_Lab1\\WinFormsApp_OOP_Lab7\\WinFormsApp_OOP_Lab7.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\THUNDEROBOT\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.24\\microsoft.windowsdesktop.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\THUNDEROBOT\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.24\\microsoft.netcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\THUNDEROBOT\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.24\\microsoft.aspnetcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\THUNDEROBOT\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.24\\microsoft.netcore.app.host.win-x64.8.0.24.nupkg.sha512"
+  ],
   "logs": []
 }
