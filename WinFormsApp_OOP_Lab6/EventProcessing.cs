@@ -33,7 +33,17 @@
         /// <param name="message"> сообщение </param>
         public void OnAction(object? sender, string message)
         {
-            _label.Text = message;
+            if (_label.InvokeRequired)
+            {
+                _label.Invoke(new Action(() =>
+                {
+                    _label.Text = message;
+                }));
+            }
+            else
+            {
+                _label.Text = message;
+            }
         }
     }
 }

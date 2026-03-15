@@ -220,7 +220,7 @@
             ShallowCloneButton.Name = "ShallowCloneButton";
             ShallowCloneButton.Size = new Size(123, 56);
             ShallowCloneButton.TabIndex = 18;
-            ShallowCloneButton.Text = "неглуб. клонирование";
+            ShallowCloneButton.Text = "Поверх. клонирование";
             ShallowCloneButton.UseVisualStyleBackColor = true;
             ShallowCloneButton.Click += ShallowCloneButton_Click;
             // 

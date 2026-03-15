@@ -3,7 +3,7 @@
     /// <summary>
     /// Класс для асинхронной работы с вектором
     /// </summary>
-    public class VectorAsync
+    public class AsyncVector
     {
         /// <summary> Событие о каком-либо действии </summary>
         public event EventHandler<string>? SomeAction;

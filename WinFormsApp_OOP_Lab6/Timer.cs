@@ -6,7 +6,7 @@
     public class Timer
     {
         /// <summary> Лейбл для отображения времени </summary>
-        private Label _label;
+        private readonly Label _label;
 
         /// <summary>
         /// Флаг работы таймеры
@@ -31,10 +31,8 @@
         {
             while (_IS_RUNNING)
             {
-                await Task.Run(() =>
-                {
-                    _label.Text = "Время: " + DateTime.Now.ToString("HH:mm:ss");
-                });
+                _label.Text = "Время: " + DateTime.Now.ToString("HH:mm:ss");
+                await Task.Delay(1000);
             }
         }
     }

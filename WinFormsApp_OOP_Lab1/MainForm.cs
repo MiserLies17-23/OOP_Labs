@@ -4,21 +4,21 @@ using WinFormsApp_OOP_Lab1.Model;
 namespace WinFormsApp_OOP_Lab1
 {
     /// <summary>
-    /// Класс главной формы приложения
+    /// Главный UI-компонент приложения
     /// </summary>
     public partial class MainForm : Form
     {
         // Объект класса Person - человек
         private Person _person;
 
-        // Форма приветствия
-        private HelloForm _helloForm;
+        // Приветственная форма
+        private readonly HelloForm _helloForm;
 
-        // Форма изменения данных человека
-        private EditForm _editForm;
+        // Форма для изменения данных человека
+        private readonly EditForm _editForm;
 
         /// <summary>
-        /// Конструктор без параметров
+        /// Конструктор по умолчанию
         /// </summary>
         public MainForm()
         {
@@ -29,10 +29,10 @@ namespace WinFormsApp_OOP_Lab1
         }
 
         /// <summary>
-        /// Загрузка формы
+        /// Обработчик событий для загрузки формы
         /// </summary>
-        /// <param name="sender"> объект, вызывающий событие </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект-отправитель (форма) </param>
+        /// <param name="e"> Событие </param>
         private void CreateForm_Load(object sender, EventArgs e)
         {
             _helloForm.ShowDialog();
@@ -40,10 +40,10 @@ namespace WinFormsApp_OOP_Lab1
         }
 
         /// <summary>
-        /// Событие для кнопки "Изменить"
+        /// Обработчик событий для кнопки "Изменить"
         /// </summary>
-        /// <param name="sender"> объект, вызывающий событие </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void CreateButton_Click(object sender, EventArgs e)
         {
             try
@@ -55,33 +55,33 @@ namespace WinFormsApp_OOP_Lab1
             {
                 ExceptionHandler.MessageBox(
                     IntPtr.Zero,
-                    ex.ToString(),
-                    "Ошибка переполнения памяти",
+                    ex.Message,
+                    "Ошибка изменения данных",
                     16);
             }
         }
 
         /// <summary>
-        /// Метод для отображения пользовательских данных
+        /// Метод для отображения данных человека
         /// </summary>
         private void ShowData()
         {
-            CountLabel.Text = $"Всего объектов: { Person.Count}";
-            GenderTextBox.Text = _person.GetMaleToString(); // Вывод поля через специальный метод
-            NameTextBox.Text = _person.ToString(); // Вывод поля через переопределённый метод ToString()
+            CountLabel.Text = $"Количество человек: { Person.Count}";
+            GenderTextBox.Text = _person.GetMaleToString(); 
+            NameTextBox.Text = _person.ToString(); 
             HeightTextBox.Text = _person.Height.ToString();
-            WidthTextBox.Text = _person.Width.ToString(); // Вывод поля через метод ToString()
-            CountryTextBox.Text = _person.Country; // Непосредственнный вывод поля
+            WidthTextBox.Text = _person.Width.ToString(); 
+            CountryTextBox.Text = _person.Country; 
             CityTextBox.Text = _person.City;
             AgeTextBox.Text = "0x" + _person.Age.ToString("x");
             CurrentLabel.Text = $"Текущий объект: {Person.Persons.IndexOf(_person)}";
         }
 
         /// <summary>
-        /// Событие для кнопки "Выйти"
+        /// Обработчик событий для кнопки "Выйти"
         /// </summary>
-        /// <param name="sender"> объект, вызывающий событие </param>
-        /// <param name="e"> событие </param>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();

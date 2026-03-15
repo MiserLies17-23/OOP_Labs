@@ -1,18 +1,25 @@
-using System.Threading.Tasks;
-
 namespace WinFormsApp_OOP_Lab6
 {
+    /// <summary>
+    /// UI-компонент приложения
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary> Таймер </summary>
+        private readonly Timer _timer;
 
-        private Timer _timer;
-
+        /// <summary> Объект AsyncVector для асинхронной работы с вектором </summary>
         private AsyncVector _vectorAsync;
 
+        /// <summary> Объект EventProcessing для отображения событий </summary>
         private EventProcessing _event;
 
+        /// <summary> Вектор целочисленных элементов </summary>
         private List<int> _list;
 
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +29,11 @@ namespace WinFormsApp_OOP_Lab6
             _list = [];
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (форма) </param>
+        /// <param name="e"> Событие </param>
         private async void MainForm_Load(object sender, EventArgs e)
         {
             try
@@ -34,12 +46,18 @@ namespace WinFormsApp_OOP_Lab6
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка загрузки",
                     16);
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Создать"
+        /// Асинхронное создание вектора 
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private async void CreateButton_Click(object sender, EventArgs e)
         {
             try
@@ -56,12 +74,18 @@ namespace WinFormsApp_OOP_Lab6
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка создания вектора",
                     16);
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Найти"
+        /// Асинхронный поиск минимального значения
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private async void FoundButton_Click(object sender, EventArgs e)
         {
             try
@@ -77,12 +101,18 @@ namespace WinFormsApp_OOP_Lab6
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка поиска минимального",
                     16);
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Сортировать"
+        /// Асинхронная сортировка вектора
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private async void SortButton_Click(object sender, EventArgs e)
         {
             try
@@ -98,17 +128,19 @@ namespace WinFormsApp_OOP_Lab6
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка сортировки",
                     16);
             }
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        /// <summary>
+        /// Обработчик событий для кнопки "Сгенерировать"
+        /// Асинхронная генерация случайного числа
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
+        /// <exception cref="ArgumentException"> Исключение неверного аргумента для нижней границы диапазона </exception>
         private async void GenerateButton_Click(object sender, EventArgs e)
         {
             try
@@ -124,10 +156,21 @@ namespace WinFormsApp_OOP_Lab6
             {
                 ExceptionHandler.MessageBox(
                     Handle,
-                    ex.ToString(),
+                    ex.Message,
                     "Ошибка генерации случайного значения",
                     16);
             }
         }
+
+        /// <summary>
+        /// Обработчик событий для кнопки "Выйти"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
