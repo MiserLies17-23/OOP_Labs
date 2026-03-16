@@ -43,11 +43,11 @@
             // 
             // ExitButton
             // 
-            ExitButton.Location = new Point(33, 364);
+            ExitButton.Location = new Point(12, 333);
             ExitButton.Name = "ExitButton";
             ExitButton.Size = new Size(94, 29);
             ExitButton.TabIndex = 0;
-            ExitButton.Text = "Выйти";
+            ExitButton.Text = "Назад";
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
@@ -59,7 +59,7 @@
             PersonDataGridView.AllowUserToResizeRows = false;
             PersonDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             PersonDataGridView.Columns.AddRange(new DataGridViewColumn[] { IdColumn, GenderColumn, NameColumn, AgeColumn, EditColumn, DeleteColumn });
-            PersonDataGridView.Location = new Point(60, 104);
+            PersonDataGridView.Location = new Point(58, 66);
             PersonDataGridView.Name = "PersonDataGridView";
             PersonDataGridView.RowHeadersVisible = false;
             PersonDataGridView.RowHeadersWidth = 51;
@@ -111,7 +111,7 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(344, 310);
+            AddButton.Location = new Point(325, 280);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(94, 29);
             AddButton.TabIndex = 2;
@@ -123,7 +123,7 @@
             // 
             MVCHeader.AutoSize = true;
             MVCHeader.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            MVCHeader.Location = new Point(277, 47);
+            MVCHeader.Location = new Point(275, 4);
             MVCHeader.Name = "MVCHeader";
             MVCHeader.Size = new Size(245, 25);
             MVCHeader.TabIndex = 3;
@@ -133,7 +133,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 413);
+            ClientSize = new Size(779, 369);
             Controls.Add(MVCHeader);
             Controls.Add(AddButton);
             Controls.Add(PersonDataGridView);

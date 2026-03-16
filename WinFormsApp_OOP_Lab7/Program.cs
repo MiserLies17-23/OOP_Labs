@@ -1,3 +1,5 @@
+using WinFormsApp_OOP_Lab7.View;
+
 namespace WinFormsApp_OOP_Lab7
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace WinFormsApp_OOP_Lab7
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new HelloForm());
         }
     }
 }

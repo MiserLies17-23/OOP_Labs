@@ -15,7 +15,7 @@ namespace WinFormsApp_OOP_Lab7.DTO
         /// <summary>
         /// Пол модели
         /// </summary>
-        public string? Gender { get; set; }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Имя модели
@@ -27,6 +27,14 @@ namespace WinFormsApp_OOP_Lab7.DTO
         /// </summary>
         public int Age { get; set; }
 
+        /// <summary>
+        /// Метод для конвертации пола в строку
+        /// </summary>
+        /// <returns> Строка - пол человека </returns>
+        public string GetGenderToString()
+        {
+            return Gender == Gender.MALE ? "Муж" : "Жен";
+        }
 
     }
 }

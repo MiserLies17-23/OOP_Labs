@@ -11,8 +11,8 @@ namespace WinFormsApp_OOP_Lab7
     public partial class MainForm : Form
     {
         /// <summary> Контроллер для взаимодействия с моделью (реализация паттерна MVC) </summary>
-        private PersonController _personController;
-        
+        private readonly PersonController _personController;
+
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -31,8 +31,6 @@ namespace WinFormsApp_OOP_Lab7
         {
             try
             {
-                MessageBox.Show("Бригада 13: Пономарёв П., Толстоухов В.\nВариант 13: Человек",
-                    "Лабораторная работа №7");
                 ShowAllPersons();
             }
             catch (Exception ex)
@@ -58,7 +56,7 @@ namespace WinFormsApp_OOP_Lab7
                 {
                     int rowIndex = PersonDataGridView.Rows.Add();
                     PersonDataGridView.Rows[rowIndex].Cells[0].Value = persons.IndexOf(person);
-                    PersonDataGridView.Rows[rowIndex].Cells[1].Value = person.Gender;
+                    PersonDataGridView.Rows[rowIndex].Cells[1].Value = person.GetGenderToString();
                     PersonDataGridView.Rows[rowIndex].Cells[2].Value = person.Name;
                     PersonDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
                     PersonDataGridView.Rows[rowIndex].Cells[4].Value = "Изменить";
@@ -148,7 +146,7 @@ namespace WinFormsApp_OOP_Lab7
         /// <param name="e"> Событие </param>
         public void ExitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
     }
 }

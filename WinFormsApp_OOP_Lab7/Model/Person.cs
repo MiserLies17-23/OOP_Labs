@@ -38,14 +38,5 @@
             Name = name;
             Age = age;
         }
-
-        /// <summary>
-        /// Метод для конвертации пола в строку
-        /// </summary>
-        /// <returns> Строка - пол человека </returns>
-        public string GetGenderToString()
-        {
-            return Gender == Gender.MALE ? "Муж" : "Жен";
-        }
     }
 }

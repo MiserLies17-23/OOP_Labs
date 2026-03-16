@@ -48,6 +48,7 @@ namespace WinFormsApp_OOP_Lab7.Forms
             {
                 { Gender.MALE, "Муж" },
                 { Gender.FEMALE, "Жен" },
+
             };
             GenderComboBox.DataSource = new BindingSource(displayValues, null);
             GenderComboBox.DisplayMember = "Value";
@@ -79,7 +80,7 @@ namespace WinFormsApp_OOP_Lab7.Forms
                     throw new ArgumentException("Возраст должен быть числом!");
 
                 Gender gender = GenderComboBox.SelectedValue is Gender gen ? gen : throw new ArgumentException(
-                    "Вес не выбран!");
+                    "Пол не выбран!");
                 string name = NameTextBox.Text;
                 int age = Convert.ToInt32(AgeTextBox.Text);
                 _personController.UpdatePerson(_personDTO.Id, gender, name, age);
