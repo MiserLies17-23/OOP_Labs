@@ -48,28 +48,17 @@ namespace WinFormsApp_OOP_Lab7
         /// </summary>
         private void ShowAllPersons()
         {
-            try
+            List<PersonDTO> persons = _personController.GetAllPersons() ?? [];
+            PersonDataGridView.Rows.Clear();
+            foreach (PersonDTO person in persons)
             {
-                List<PersonDTO> persons = _personController.GetAllPersons() ?? [];
-                PersonDataGridView.Rows.Clear();
-                foreach (PersonDTO person in persons)
-                {
-                    int rowIndex = PersonDataGridView.Rows.Add();
-                    PersonDataGridView.Rows[rowIndex].Cells[0].Value = persons.IndexOf(person);
-                    PersonDataGridView.Rows[rowIndex].Cells[1].Value = person.GetGenderToString();
-                    PersonDataGridView.Rows[rowIndex].Cells[2].Value = person.Name;
-                    PersonDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
-                    PersonDataGridView.Rows[rowIndex].Cells[4].Value = "Изменить";
-                    PersonDataGridView.Rows[rowIndex].Cells[5].Value = "Удалить";
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.MessageBox(
-                    Handle,
-                    ex.Message,
-                    "Ошибка",
-                    16);
+                int rowIndex = PersonDataGridView.Rows.Add();
+                PersonDataGridView.Rows[rowIndex].Cells[0].Value = persons.IndexOf(person);
+                PersonDataGridView.Rows[rowIndex].Cells[1].Value = person.GetGenderToString();
+                PersonDataGridView.Rows[rowIndex].Cells[2].Value = person.Name;
+                PersonDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
+                PersonDataGridView.Rows[rowIndex].Cells[4].Value = "Изменить";
+                PersonDataGridView.Rows[rowIndex].Cells[5].Value = "Удалить";
             }
         }
         
