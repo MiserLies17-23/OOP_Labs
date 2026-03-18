@@ -3,6 +3,9 @@ using WinFormsApp_OOP_Lab8.Model;
 
 namespace WinFormsApp_OOP_Lab8.Utils
 {
+    /// <summary>
+    /// Утилитный класс для генерации случайных объектов Person
+    /// </summary>
     public class PersonRandomGenerator
     {
         /// <summary> Статический объект Random для генерации случайных значений </summary>

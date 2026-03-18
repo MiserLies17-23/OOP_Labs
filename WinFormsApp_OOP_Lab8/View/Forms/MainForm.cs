@@ -4,23 +4,39 @@ using WinFormsApp_OOP_Lab8.View;
 
 namespace WinFormsApp_OOP_Lab8
 {
+    /// <summary>
+    /// Графический Ui-комопнент
+    /// Реализует интерфейс IView
+    /// </summary>
     public partial class MainForm : Form, IView
     {
+        /// <summary> Режим (изменение/добавление) </summary>
         private int _mode;
 
+        /// <summary> Список объектов PersonDTO (только для чтения) </summary>
         private List<PersonDTO> _persons;
 
+        /// <summary> Событий добавления нового объекта </summary>
         public event Action<string, string, string> AddPersonEvent;
 
+        /// <summary> Событие изменения объекта </summary>
         public event Action<int, string, string, string> EditPersonEvent;
 
+        /// <summary> Событие удаления объекта </summary>
         public event Action<int> DeletePersonEvent;
 
+        /// <summary>
+        /// Свойство для списка объектов
+        /// </summary>
         public List<PersonDTO> Persons
         {
             get => _persons;
             set => _persons = value;
         }
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -31,6 +47,11 @@ namespace WinFormsApp_OOP_Lab8
             DeletePersonEvent = delegate { };
         }
 
+        /// <summary>
+        /// Обработчик событий для загрузки формы
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (форма) </param>
+        /// <param name="e"> Событие </param>
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -45,9 +66,11 @@ namespace WinFormsApp_OOP_Lab8
                     "Ошибка загрузки формы",
                     16);
             }
-
         }
 
+        /// <summary>
+        /// Метод для отображения всех объектов
+        /// </summary>
         private void ShowAllPersons()
         {
             PersonDataGridView.Rows.Clear();
@@ -63,6 +86,21 @@ namespace WinFormsApp_OOP_Lab8
             }
         }
 
+        /// <summary>
+        /// Метод для очистки полей панели
+        /// </summary>
+        private void FieldClear()
+        {
+            NameTextBox.Text = string.Empty;
+            CountryTextBox.Text = string.Empty;
+            CityTextBox.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Обработчик событий для нажати на кнопки таблицы
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void PersonDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -75,7 +113,7 @@ namespace WinFormsApp_OOP_Lab8
                     _mode = personIndex;
 
                     ActivityLabel.Text = "Форма изменения данных человека";
-                    IdLabel.Text = personIndex.ToString();
+                    IdLabel.Text = $"Id: {personIndex}";
                     NameTextBox.Text = editPerson.Name;
                     CountryTextBox.Text = editPerson.Country;
                     CityTextBox.Text = editPerson.City;
@@ -108,17 +146,27 @@ namespace WinFormsApp_OOP_Lab8
             }
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Добавить"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void AddButton_Click(object sender, EventArgs e)
         {
             _mode = _persons.Count;
 
             ActivityLabel.Text = "Форма добавления нового человека";
-            IdLabel.Text = _persons.Count.ToString();
+            IdLabel.Text = $"Id: {_persons.Count}";
 
             ActivityPanel.Visible = true;
             AddButton.Enabled = false;
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Сохранить"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
@@ -130,6 +178,8 @@ namespace WinFormsApp_OOP_Lab8
                     var city = CityTextBox.Text;
 
                     AddPersonEvent?.Invoke(name, country, city);
+
+                    MessageBox.Show("Человек успешно добавлен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
@@ -139,7 +189,10 @@ namespace WinFormsApp_OOP_Lab8
                     var city = CityTextBox.Text;
 
                     EditPersonEvent?.Invoke(id, name, country, city);
+
+                    MessageBox.Show("Данные успешно обновлены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
+                FieldClear();
 
                 ActivityPanel.Visible = false;
                 AddButton.Enabled = true;
@@ -155,16 +208,25 @@ namespace WinFormsApp_OOP_Lab8
                     16);
             }
         }
+
+        /// <summary>
+        /// Обработчик событий для кнопки "Отмена"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void CancellButton_Click(object sender, EventArgs e)
         {
-            NameTextBox.Text = string.Empty;
-            CountryTextBox.Text = string.Empty;
-            CityTextBox.Text = string.Empty;
+            FieldClear();
 
             ActivityPanel.Visible = false;
             AddButton.Enabled = true;
         }
 
+        /// <summary>
+        /// Обработчик событий для кнопки "Выход"
+        /// </summary>
+        /// <param name="sender"> Объект-отправитель (кнопка) </param>
+        /// <param name="e"> Событие </param>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Close();

@@ -24,9 +24,8 @@
         /// <summary>
         /// Конструктор с параметрами
         /// </summary>
-        /// <param name="gender"> Пол </param>
         /// <param name="name"> Имя </param>
-        /// <param name="age"> Возраст </param>
+        /// <param name="address"> Адрес проживания </param>
         public Person(string name, Address address)
         {
             Name = name;

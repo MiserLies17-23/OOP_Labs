@@ -59,19 +59,5 @@ namespace WinFormsApp_OOP_Lab8.Model
             Country = country;
             City = city;
         }
-
-        /// <summary>
-        /// Конструктор с параметром
-        /// Глубокое копирование объекта
-        /// </summary>
-        /// <param name="address"> адрес </param>
-        public Address(Address address) : this()
-        {
-            if (address == null)
-                throw new ArgumentNullException(nameof(address));
-
-            Country = address.Country;
-            City = address.City;
-        }
     }
 }

@@ -1,13 +1,15 @@
 ﻿namespace WinFormsApp_OOP_Lab8.Utils
 {
+    /// <summary>
+    /// Утилитный класс для валидации данных 
+    /// </summary>
     public static class Validator
     {
         /// <summary>
         /// Статический метод для валидации строковых полей 
         /// </summary>
         /// <param name="value"> Проверяемое значение </param>
-        /// <param name="typeName"> Имя поля </param>
-        /// <exception cref="ArgumentException"> Ошибка валидации </exception>
+        /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
         public static void StringParamValidation(string value)
         {
             if (string.IsNullOrWhiteSpace(value))

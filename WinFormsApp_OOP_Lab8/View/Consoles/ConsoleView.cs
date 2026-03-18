@@ -2,22 +2,36 @@
 
 namespace WinFormsApp_OOP_Lab8.View.Consoles
 {
+    /// <summary>
+    /// Консольный UI-компонент приложения
+    /// Реализует интерфейс IView
+    /// </summary>
     public class ConsoleView : IView
     {
+        /// <summary> Список объектов PersonDTO (только для чтения) </summary>
         private List<PersonDTO> _persons;
 
+        /// <summary> Событий добавления нового объекта </summary>
         public event Action<string, string, string> AddPersonEvent;
 
+        /// <summary> Событие изменения объекта </summary>
         public event Action<int, string, string, string> EditPersonEvent;
 
+        /// <summary> Событие удаления объекта </summary>
         public event Action<int> DeletePersonEvent;
 
+        /// <summary>
+        /// Свойство для списка объектов
+        /// </summary>
         public List<PersonDTO> Persons
         {
             get { return _persons; }
             set { _persons = value; }
         }
         
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public ConsoleView()
         {
             _persons = new();
@@ -26,6 +40,9 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             DeletePersonEvent = delegate { };
         }
 
+        /// <summary>
+        /// Метод для вывода главного меню
+        /// </summary>
         private void MainMenu()
         {
             ConsoleManager.Show();
@@ -38,6 +55,9 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             Console.Write("Выберите действие: ");
         }
 
+        /// <summary>
+        /// Главный метод работы UI-компонента
+        /// </summary>
         public void Run()
         {
             MainMenu();
@@ -80,6 +100,9 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             ConsoleManager.Close();
         }
 
+        /// <summary>
+        /// Метод для добавления нового человека
+        /// </summary>
         private void AddNewPerson()
         {
             Console.Write("Введите имя: ");
@@ -95,6 +118,9 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             Console.WriteLine("Человек успешно добавлен!");
         }
 
+        /// <summary>
+        /// Метод лдя вывода содержимого репозитория
+        /// </summary>
         private void ShowAllPersons()
         {
             foreach (PersonDTO person in _persons)
@@ -103,21 +129,36 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             }
         }
 
-        public void ShowPersonData(PersonDTO person)
+        /// <summary>
+        /// Метод для вывода информации о конкретном объекте
+        /// </summary>
+        /// <param name="person"> DTO объекта</param>
+        private void ShowPersonData(PersonDTO person)
         {
             Console.Write($"\nId: {person.Id}, Имя: {person.Name}, страна: {person.Country}, город: {person.City}");
         }
 
+        /// <summary>
+        /// Метод для работы с пользователем по id
+        /// </summary>
+        /// <exception cref="ArgumentException"> Исключение неверного аргумента id </exception>
         private void GetPersonById()
         {
             Console.Write("\nВведите id: ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            string? idString = Console.ReadLine();
+            if (!int.TryParse(idString, out int id))
+                throw new ArgumentException("id должен быть числом!");
 
             PersonDTO person = _persons[id];
             ShowPersonData(person);
             PersonActivity(id, person);
         }
 
+        /// <summary>
+        /// Метод, инициирующий действия над объектом
+        /// </summary>
+        /// <param name="id"> Id </param>
+        /// <param name="person"> Объект для взаимодействия </param>
         private void PersonActivity(int id, PersonDTO person)
         {
             Console.WriteLine("\nВыберите действие над человеком:");
@@ -142,6 +183,11 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             }
         }
 
+        /// <summary>
+        /// Метод для изменения данных объекта
+        /// </summary>
+        /// <param name="id"> id </param>
+        /// <param name="person"> DTO объекта </param>
         private void EditPerson(int id, PersonDTO person)
         {
             Console.WriteLine("\nВведите новые значения. Если хотите оставить текущие, нажмите Enter:");
@@ -165,6 +211,10 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             Console.WriteLine("Данные успешно обновлены!");
         }
 
+        /// <summary>
+        /// Метод для удаления объекта по id
+        /// </summary>
+        /// <param name="id"> Id </param>
         private void DeletePerson(int id)
         {
             Console.Write("\nВы уверены, что хотите удалить человека?");
