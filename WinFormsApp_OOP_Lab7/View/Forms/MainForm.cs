@@ -16,10 +16,10 @@ namespace WinFormsApp_OOP_Lab7
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public MainForm()
+        public MainForm(PersonController personController)
         {
             InitializeComponent();
-            _personController = new();
+            _personController = personController;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace WinFormsApp_OOP_Lab7
             foreach (PersonDTO person in persons)
             {
                 int rowIndex = PersonDataGridView.Rows.Add();
-                PersonDataGridView.Rows[rowIndex].Cells[0].Value = persons.IndexOf(person);
+                PersonDataGridView.Rows[rowIndex].Cells[0].Value = person.Id;
                 PersonDataGridView.Rows[rowIndex].Cells[1].Value = person.GetGenderToString();
                 PersonDataGridView.Rows[rowIndex].Cells[2].Value = person.Name;
                 PersonDataGridView.Rows[rowIndex].Cells[3].Value = person.Age;
@@ -71,11 +71,11 @@ namespace WinFormsApp_OOP_Lab7
         {
             try
             {
+                int personId = (int)PersonDataGridView.Rows[e.RowIndex].Cells[0].Value;
+                
                 if (e.RowIndex >= 0 && e.ColumnIndex == 4)
                 {
-                    int personIndex = e.RowIndex;
-
-                    PersonDTO editPerson = _personController.GetPersonById(personIndex);
+                    PersonDTO editPerson = _personController.GetPersonById(personId);
                     EditForm editForm = new(editPerson, _personController);
                     editForm.ShowDialog();
                     ShowAllPersons();
@@ -88,10 +88,8 @@ namespace WinFormsApp_OOP_Lab7
                         MessageBoxIcon.Information, 
                         MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
-                    {
-                        int personIndex = e.RowIndex;
-                        _personController.DeletePerson(personIndex);
-                    }
+                        _personController.DeletePerson(personId);
+
                     ShowAllPersons();
                 }
             }

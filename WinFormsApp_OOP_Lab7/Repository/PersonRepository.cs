@@ -9,7 +9,10 @@ namespace WinFormsApp_OOP_Lab7.Repository
     public class PersonRepository : IPersonRepository
     {
         /// <summary> Список объектов Person </summary>
-        private readonly List<Person> _persons;
+        private List<Person> _persons;
+
+        /// <summary> Id последнего человека в списке </summary>
+        private int _lastId;
 
         /// <summary>
         /// Конструктор по умолчанию
@@ -17,6 +20,7 @@ namespace WinFormsApp_OOP_Lab7.Repository
         public PersonRepository()
         {
             _persons = [];
+            _lastId = 0;
         }
 
         /// <summary>
@@ -26,6 +30,7 @@ namespace WinFormsApp_OOP_Lab7.Repository
         public PersonRepository(List<Person> persons)
         {
             _persons = persons;
+            _lastId = persons.Count;
         }
 
         /// <summary>
@@ -42,9 +47,10 @@ namespace WinFormsApp_OOP_Lab7.Repository
         /// </summary>
         /// <param name="id"> Id </param>
         /// <returns> Объект Person с заданным Id </returns>
-        public Person GetById(int id)
+        public Person? GetById(int id)
         {
-            return _persons[id];
+
+            return _persons.FirstOrDefault(p => p.Id == id);
         }
 
         /// <summary>
@@ -53,7 +59,7 @@ namespace WinFormsApp_OOP_Lab7.Repository
         /// <param name="person"> Объект Person </param>
         public void Add(Person person)
         {
-            person.Id = _persons.Count;
+            person.Id = _lastId++;
             _persons.Add(person);
         }
 
@@ -73,16 +79,18 @@ namespace WinFormsApp_OOP_Lab7.Repository
         /// <param name="id"> Id </param>
         public void Delete(int id)
         {
-            _persons.Remove(GetById(id));
+            var person = GetById(id);
+            if (person != null)
+                _persons.Remove(person);
         }
 
         /// <summary>
         /// Метод для получения длины списка
         /// </summary>
         /// <returns> Длина списка </returns>
-        public int GetCount()
+        public int GetLastId()
         {
-            return _persons.Count;
+            return _lastId;
         }
     }
 }

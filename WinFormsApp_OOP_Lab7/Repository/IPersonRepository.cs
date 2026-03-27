@@ -18,7 +18,7 @@ namespace WinFormsApp_OOP_Lab7.Repository
         /// </summary>
         /// <param name="id"> Id </param>
         /// <returns> Объект Person с заданным Id </returns>
-        Person GetById(int id);
+        Person? GetById(int id);
 
         /// <summary>
         /// Метод для добавления нового объекта Person

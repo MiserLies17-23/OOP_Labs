@@ -33,6 +33,7 @@ namespace WinFormsApp_OOP_Lab7.Service
             Validator.AgeValidation(age);
 
             Person person = new(gender, name, age);
+            
             _repository.Add(person);
         }
 
@@ -42,10 +43,11 @@ namespace WinFormsApp_OOP_Lab7.Service
         /// <param name="id"> Id </param>
         /// <returns> Объект Person с заданным Id </returns>
         /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
-        public Person GetPersonById(int id)
+        public Person? GetPersonById(int id)
         {
-            if (id >= 0 && id < _repository.GetCount())
+            if (id >= 0 && id < _repository.GetLastId())
                 return _repository.GetById(id);
+
             throw new ArgumentException("Указан неверный Id!");
         }
 
@@ -59,9 +61,12 @@ namespace WinFormsApp_OOP_Lab7.Service
         /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
         public void Update(int id, Gender gender, string name, int age)
         {
-            if (id < 0 || id >= _repository.GetCount())
+            if (id < 0 || id >= _repository.GetLastId())
                 throw new ArgumentException("Указан неверный Id!");
-            Person editPerson = _repository.GetById(id);
+
+            Person? editPerson = _repository.GetById(id);
+            if (editPerson == null)
+                return;
 
             Validator.NameValidation(name);
             Validator.AgeValidation(age);
@@ -80,10 +85,12 @@ namespace WinFormsApp_OOP_Lab7.Service
         /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
         public void Delete(int id)
         {
-            if (id < 0 || id >= _repository.GetCount())
+            if (id < 0 || id >= _repository.GetLastId())
                 throw new ArgumentException("Указан неверный Id!");
             
-            _repository.Delete(id);
+            var person = _repository.GetById(id);
+            if (person != null)
+                _repository.Delete(id);
         }
 
         /// <summary>

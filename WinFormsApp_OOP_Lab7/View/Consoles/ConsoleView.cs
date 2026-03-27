@@ -15,9 +15,9 @@ namespace WinFormsApp_OOP_Lab7.View.Consoles
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public ConsoleView()
+        public ConsoleView(PersonController personController)
         {
-            _personController = new();
+            _personController = personController;
         }
 
         /// <summary>

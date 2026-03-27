@@ -76,6 +76,7 @@ namespace WinFormsApp_OOP_Lab7.Utils
             Gender gen = GetRandomGender();
             string name = gen == Gender.MALE ? GetRandomMaleName() : GetRandomFemaleName();
             int age = GetRandomAge();
+
             return new Person(gen, name, age);
         }
 
@@ -93,7 +94,9 @@ namespace WinFormsApp_OOP_Lab7.Utils
             List<Person> persons = [];
             for (int i = 0; i < count; i++)
             {
-                persons.Add(CreateRandomPerson());
+                var person = CreateRandomPerson();
+                person.Id = persons.Count;
+                persons.Add(person);
             }
             return persons;
         }

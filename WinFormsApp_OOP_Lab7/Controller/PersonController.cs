@@ -30,8 +30,9 @@ namespace WinFormsApp_OOP_Lab7.Controller
         /// <exception cref="ArgumentNullException"> Исключение нулевого аргумента </exception>
         public List<PersonDTO> GetAllPersons()
         {
-            List<Person> persons = _personService.GetAll()
+            var persons = _personService.GetAll()
                 ?? throw new ArgumentNullException("Список пуст!");
+
             return persons.Select(p => new PersonDTO
             {
                 Id = p.Id,
@@ -59,7 +60,10 @@ namespace WinFormsApp_OOP_Lab7.Controller
         /// <returns> Объект Person c заданным Id </returns>
         public PersonDTO GetPersonById(int id)
         {
-            Person person = _personService.GetPersonById(id);
+            var person = _personService.GetPersonById(id);
+            if (person == null) 
+                return null;
+
             return new PersonDTO
             {
                 Id = id,
