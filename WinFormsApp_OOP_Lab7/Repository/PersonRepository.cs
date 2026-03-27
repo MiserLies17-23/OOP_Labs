@@ -58,6 +58,16 @@ namespace WinFormsApp_OOP_Lab7.Repository
         }
 
         /// <summary>
+        /// Метод для обновления объекта Person
+        /// </summary>
+        /// <param name="id"> Id </param>
+        /// <param name="person"> Объект Person </param>
+        public void Update(int id, Person person)
+        {
+            _persons[id] = person;
+        }
+
+        /// <summary>
         /// Метод для удаления объекта Person по Id
         /// </summary>
         /// <param name="id"> Id </param>

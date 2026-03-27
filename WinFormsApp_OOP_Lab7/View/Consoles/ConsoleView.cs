@@ -146,8 +146,8 @@ namespace WinFormsApp_OOP_Lab7.View.Consoles
         /// <summary>
         /// Метод, инициирующий действия над объектом
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="person"></param>
+        /// <param name="id"> Id </param>
+        /// <param name="person"> Объект для взаимодействия </param>
         private void PersonActivity(int id, PersonDTO person)
         {
             Console.WriteLine("\nВыберите действие над человеком:");

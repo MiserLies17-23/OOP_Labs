@@ -69,6 +69,8 @@ namespace WinFormsApp_OOP_Lab7.Service
             editPerson.Gender = gender;
             editPerson.Name = name;
             editPerson.Age = age;
+
+            _repository.Update(id, editPerson);
         }
 
         /// <summary>
@@ -78,10 +80,10 @@ namespace WinFormsApp_OOP_Lab7.Service
         /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
         public void Delete(int id)
         {
-            if (id >= 0 && id < _repository.GetCount())
-                _repository.Delete(id);
-            else
+            if (id < 0 || id >= _repository.GetCount())
                 throw new ArgumentException("Указан неверный Id!");
+            
+            _repository.Delete(id);
         }
 
         /// <summary>
