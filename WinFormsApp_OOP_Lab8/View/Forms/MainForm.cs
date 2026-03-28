@@ -11,7 +11,7 @@ namespace WinFormsApp_OOP_Lab8
     public partial class MainForm : Form, IView
     {
         /// <summary> Режим (изменение/добавление) </summary>
-        private int _mode;
+        private string _mode;
 
         /// <summary> Список объектов PersonDTO (только для чтения) </summary>
         private List<PersonDTO> _persons;
@@ -40,13 +40,13 @@ namespace WinFormsApp_OOP_Lab8
         public MainForm()
         {
             InitializeComponent();
-            _mode = 0;
+            _mode = "Add";
             _persons = new();
             AddPersonEvent = delegate { };
             EditPersonEvent = delegate { };
             DeletePersonEvent = delegate { };
         }
-
+         
         /// <summary>
         /// Обработчик событий для загрузки формы
         /// </summary>
@@ -105,12 +105,16 @@ namespace WinFormsApp_OOP_Lab8
         {
             try
             {
+                int personIndex = (int)PersonDataGridView.Rows[e.RowIndex].Cells[0].Value;
                 if (e.RowIndex >= 0 && e.ColumnIndex == 4)
                 {
-                    int personIndex = e.RowIndex;
-                    PersonDTO editPerson = _persons[personIndex];
+                    PersonDTO? editPerson = _persons.FirstOrDefault(p => p.Id == personIndex);
+                    
+                    if (editPerson == null)
+                        throw new ArgumentException("Объект не найден!");
 
-                    _mode = personIndex;
+                    _mode = "Edit";
+                    IdLabel.Show();
 
                     ActivityLabel.Text = "Форма изменения данных человека";
                     IdLabel.Text = $"Id: {personIndex}";
@@ -130,7 +134,6 @@ namespace WinFormsApp_OOP_Lab8
                         MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
-                        int personIndex = e.RowIndex;
                         DeletePersonEvent?.Invoke(personIndex);
                     }
                     ShowAllPersons();
@@ -153,10 +156,10 @@ namespace WinFormsApp_OOP_Lab8
         /// <param name="e"> Событие </param>
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _mode = _persons.Count;
+            _mode = "Add";
 
             ActivityLabel.Text = "Форма добавления нового человека";
-            IdLabel.Text = $"Id: {_persons.Count}";
+            IdLabel.Hide();
 
             ActivityPanel.Visible = true;
             AddButton.Enabled = false;
@@ -171,7 +174,7 @@ namespace WinFormsApp_OOP_Lab8
         {
             try
             {
-                if (_mode == _persons.Count)
+                if (_mode == "Add")
                 {
                     var name = NameTextBox.Text;
                     var country = CountryTextBox.Text;

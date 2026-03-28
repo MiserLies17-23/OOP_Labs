@@ -8,7 +8,7 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
     /// </summary>
     public class ConsoleView : IView
     {
-        /// <summary> Список объектов PersonDTO (только для чтения) </summary>
+        /// <summary> Список объектов PersonDTO </summary>
         private List<PersonDTO> _persons;
 
         /// <summary> Событий добавления нового объекта </summary>
@@ -149,7 +149,10 @@ namespace WinFormsApp_OOP_Lab8.View.Consoles
             if (!int.TryParse(idString, out int id))
                 throw new ArgumentException("id должен быть числом!");
 
-            PersonDTO person = _persons[id];
+            PersonDTO? person = _persons.FirstOrDefault(person => person.Id == id);
+            if (person == null)
+                throw new ArgumentException($"Объект с id {id} не найден!");
+
             ShowPersonData(person);
             PersonActivity(id, person);
         }

@@ -84,7 +84,9 @@ namespace WinFormsApp_OOP_Lab8.Utils
             List<Person> persons = [];
             for (int i = 0; i < count; i++)
             {
-                persons.Add(CreateRandomPerson());
+                var person = CreateRandomPerson();
+                person.Id = i;
+                persons.Add(person);
             }
             return persons;
         }

@@ -17,6 +17,9 @@ namespace WinFormsApp_OOP_Lab8.Presenter
         /// <summary> View-компонент </summary>
         private readonly IView _view;
 
+        /// <summary> Поле для назначения id объектов </summary>
+        private int _nextId;
+
         /// <summary>
         /// Конструктор с параметром
         /// </summary>
@@ -25,6 +28,7 @@ namespace WinFormsApp_OOP_Lab8.Presenter
         {
             _persons = PersonRandomGenerator.GetPersons();
             _view = view;
+            _nextId = _persons.Count > 0 ? _persons.Max(p => p.Id) + 1 : 0;
 
             GetPersonsDTO();
             _view.AddPersonEvent += OnAddPerson;
@@ -45,6 +49,7 @@ namespace WinFormsApp_OOP_Lab8.Presenter
             Validator.StringParamValidation(city);
 
             Person person = new(name, new Address(country, city));
+            person.Id = _nextId++;
             _persons.Add(person);
 
             GetPersonsDTO();
@@ -57,11 +62,16 @@ namespace WinFormsApp_OOP_Lab8.Presenter
         /// <exception cref="ArgumentException"> Исключение неверного аргумента </exception>
         private void OnDeletePerson(int id)
         {
-            if (id < 0 || id >= _persons.Count)
-                throw new ArgumentException("Неверное значение id!");
-            _persons.Remove(_persons[id]);
-
-            GetPersonsDTO();
+            var person = _persons.FirstOrDefault(p => p.Id == id);
+            if (person != null)
+            {
+                _persons.Remove(person);
+                GetPersonsDTO();
+            }
+            else
+            {
+                throw new ArgumentException($"Человек с Id {id} не найден");
+            }
         }
 
         /// <summary>
@@ -74,8 +84,9 @@ namespace WinFormsApp_OOP_Lab8.Presenter
         /// <exception cref="ArgumentException"></exception>
         public void OnEditPerson(int id, string name, string country, string city)
         {
-            if (id < 0 || id >= _persons.Count)
-                throw new ArgumentException("Неверное значение id!");
+            var person = _persons.FirstOrDefault(p => p.Id == id);
+            if (person == null)
+                throw new ArgumentException($"Человек с Id {id} не найден");
 
             Validator.StringParamValidation(name);
             Validator.StringParamValidation(country);
@@ -93,9 +104,9 @@ namespace WinFormsApp_OOP_Lab8.Presenter
         /// </summary>
         private void GetPersonsDTO()
         {
-            _view.Persons = _persons.Select((p, index) => new PersonDTO
+            _view.Persons = _persons.Select(p => new PersonDTO
             {
-                Id = index,
+                Id = p.Id,
                 Name = p.Name,
                 Country = p.Address.Country,
                 City = p.Address.City
