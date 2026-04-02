@@ -49,6 +49,7 @@
             SaveButton = new Button();
             ActivityLabel = new Label();
             ExitButton = new Button();
+            IdValueLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)PersonDataGridView).BeginInit();
             ActivityPanel.SuspendLayout();
             SuspendLayout();
@@ -134,6 +135,7 @@
             // ActivityPanel
             // 
             ActivityPanel.BorderStyle = BorderStyle.FixedSingle;
+            ActivityPanel.Controls.Add(IdValueLabel);
             ActivityPanel.Controls.Add(NameTextBox);
             ActivityPanel.Controls.Add(CancellButton);
             ActivityPanel.Controls.Add(IdLabel);
@@ -247,6 +249,15 @@
             ExitButton.UseVisualStyleBackColor = true;
             ExitButton.Click += ExitButton_Click;
             // 
+            // IdValueLabel
+            // 
+            IdValueLabel.AutoSize = true;
+            IdValueLabel.Location = new Point(38, 44);
+            IdValueLabel.Name = "IdValueLabel";
+            IdValueLabel.Size = new Size(18, 20);
+            IdValueLabel.TabIndex = 82;
+            IdValueLabel.Text = "...";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -292,5 +303,6 @@
         private DataGridViewTextBoxColumn CityColumn;
         private DataGridViewButtonColumn EditColumn;
         private DataGridViewButtonColumn DeleteColumn;
+        private Label IdValueLabel;
     }
 }

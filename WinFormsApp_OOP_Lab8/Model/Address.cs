@@ -8,37 +8,15 @@ namespace WinFormsApp_OOP_Lab8.Model
     /// </summary>
     public class Address
     {
-        /// <summary> Страна проживания </summary>
-        private string? _country;
-
-        /// <summary> Город проживания </summary>
-        private string? _city;
-
         /// <summary>
         /// Свойство для страны проживания
         /// </summary>
-        public string Country
-        {
-            get => _country ?? "";
-            set
-            {
-                Validator.StringParamValidation(value);
-                _country = value;
-            }
-        }
+        public string Country { get; set; }
 
         /// <summary>
         /// Свойство для города проживания
         /// </summary>
-        public string City
-        {
-            get => _city ?? "";
-            set
-            {
-                Validator.StringParamValidation(value);
-                _city = value;
-            }
-        }
+        public string City { get; set; }
 
         /// <summary>
         /// Конструктор по умолчанию

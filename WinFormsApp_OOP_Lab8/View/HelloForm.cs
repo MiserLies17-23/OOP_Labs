@@ -8,12 +8,16 @@ namespace WinFormsApp_OOP_Lab8.View
     /// </summary>
     public partial class HelloForm : Form
     {
+        /// <summary> Презентер для управления поведением View-компонентов </summary>
+        private PersonPresenter _personPresenter;
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         public HelloForm()
         {
             InitializeComponent();
+            _personPresenter = new();
         }
 
         /// <summary>
@@ -27,7 +31,7 @@ namespace WinFormsApp_OOP_Lab8.View
             FormButton.Enabled = false;
 
             ConsoleView console = new();
-            PersonPresenter presenter = new(console);
+            _personPresenter.SetView(console);
             console.Run();
 
             ConsoleButton.Enabled = true;
@@ -45,7 +49,7 @@ namespace WinFormsApp_OOP_Lab8.View
             FormButton.Enabled = false;
 
             MainForm form = new();
-            PersonPresenter presenter = new(form);
+            _personPresenter.SetView(form);
             form.ShowDialog();
 
             ConsoleButton.Enabled = true;

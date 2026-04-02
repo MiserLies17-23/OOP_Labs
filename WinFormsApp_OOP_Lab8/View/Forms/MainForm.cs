@@ -105,19 +105,18 @@ namespace WinFormsApp_OOP_Lab8
         {
             try
             {
-                int personIndex = (int)PersonDataGridView.Rows[e.RowIndex].Cells[0].Value;
+                int personId = (int)PersonDataGridView.Rows[e.RowIndex].Cells[0].Value;
                 if (e.RowIndex >= 0 && e.ColumnIndex == 4)
                 {
-                    PersonDTO? editPerson = _persons.FirstOrDefault(p => p.Id == personIndex);
+                    PersonDTO? editPerson = _persons.FirstOrDefault(p => p.Id == personId);
                     
                     if (editPerson == null)
                         throw new ArgumentException("Объект не найден!");
 
                     _mode = "Edit";
-                    IdLabel.Show();
 
                     ActivityLabel.Text = "Форма изменения данных человека";
-                    IdLabel.Text = $"Id: {personIndex}";
+                    IdValueLabel.Text = personId.ToString();
                     NameTextBox.Text = editPerson.Name;
                     CountryTextBox.Text = editPerson.Country;
                     CityTextBox.Text = editPerson.City;
@@ -134,7 +133,7 @@ namespace WinFormsApp_OOP_Lab8
                         MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
-                        DeletePersonEvent?.Invoke(personIndex);
+                        DeletePersonEvent?.Invoke(personId);
                     }
                     ShowAllPersons();
                 }
@@ -147,7 +146,7 @@ namespace WinFormsApp_OOP_Lab8
                     "Ошибка",
                     16);
             }
-        }
+}
 
         /// <summary>
         /// Обработчик событий для кнопки "Добавить"
@@ -159,7 +158,7 @@ namespace WinFormsApp_OOP_Lab8
             _mode = "Add";
 
             ActivityLabel.Text = "Форма добавления нового человека";
-            IdLabel.Hide();
+            IdValueLabel.Text = "...";
 
             ActivityPanel.Visible = true;
             AddButton.Enabled = false;
@@ -186,7 +185,7 @@ namespace WinFormsApp_OOP_Lab8
                 }
                 else
                 {
-                    int id = Convert.ToInt32(IdLabel.Text);
+                    int id = Convert.ToInt32(IdValueLabel.Text);
                     var name = NameTextBox.Text;
                     var country = CountryTextBox.Text;
                     var city = CityTextBox.Text;
